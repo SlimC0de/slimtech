@@ -1,46 +1,70 @@
 import { motion } from "framer-motion";
+import { ArrowUpRight, Sparkles } from "lucide-react";
 
 export default function About() {
   return (
-    <section id="about" className="bg-white text-[#090909]">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-32">
-        <div className="grid gap-14 lg:grid-cols-2 lg:gap-24">
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-black/35">
-              About SlimTech
-            </p>
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[#050505]"
+    >
+      <div className="mx-auto max-w-7xl px-6 py-28 md:px-10 lg:px-14 lg:py-36">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="glass glass-highlight relative overflow-hidden rounded-[2rem] p-7 md:p-12 lg:p-16"
+        >
+          {/* Ambient glow */}
+          <div className="pointer-events-none absolute right-[-10%] top-[-30%] h-[350px] w-[350px] rounded-full bg-blue-500/10 blur-[100px]" />
 
-            <h2 className="mt-5 text-4xl font-semibold leading-[1] tracking-[-0.05em] md:text-6xl">
-              Small studio.
-              <br />
-              Serious products.
+          <div className="relative">
+            <div className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.04]">
+                <Sparkles size={14} className="text-blue-300" />
+              </div>
+
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/30">
+                03 — About SlimTech
+              </p>
+            </div>
+
+            <h2 className="mt-10 max-w-5xl text-[clamp(2.7rem,6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.065em] text-white">
+              We build digital experiences that make{" "}
+              <span className="text-white/25">
+                ideas feel real.
+              </span>
             </h2>
-          </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="lg:pt-14"
-          >
-            <p className="text-xl leading-9 text-black/65 md:text-2xl">
-              SlimTech is a digital studio focused on building modern
-              websites, mobile applications and digital products.
-            </p>
+            <div className="mt-12 grid gap-10 border-t border-white/10 pt-10 md:grid-cols-[1fr_0.65fr]">
+              <p className="max-w-2xl text-base leading-8 text-white/45">
+                SlimTech is an independent digital studio focused on
+                creating modern websites, mobile applications and digital
+                products.
+              </p>
 
-            <p className="mt-7 max-w-xl text-base leading-7 text-black/45">
-              We care about the details that make a product feel finished:
-              thoughtful interfaces, clear communication, reliable technology
-              and experiences that make sense to the people using them.
-            </p>
-          </motion.div>
-        </div>
+              <div>
+                <p className="text-xs leading-6 text-white/30">
+                  From the first idea to the finished product, we focus on
+                  clarity, usability and details that make the experience
+                  feel considered.
+                </p>
+
+                <a
+                  href="#contact"
+                  className="group mt-7 inline-flex items-center gap-2 text-sm font-medium text-white"
+                >
+                  Work with us
+
+                  <ArrowUpRight
+                    size={16}
+                    className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

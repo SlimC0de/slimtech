@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 @layer base {
@@ -9,10 +10,24 @@
 
   html {
     scroll-behavior: smooth;
+    background: #050505;
   }
 
   body {
-    background: #090909;
+    min-width: 320px;
+    overflow-x: hidden;
+    background:
+      radial-gradient(
+        circle at 50% -10%,
+        rgba(255, 255, 255, 0.08),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at 85% 30%,
+        rgba(59, 130, 246, 0.07),
+        transparent 30%
+      ),
+      #050505;
     color: #f5f5f5;
     font-family:
       Inter,
@@ -21,11 +36,43 @@
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body::before {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    content: "";
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.018) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.018) 1px,
+        transparent 1px
+      );
+    background-size: 80px 80px;
+    mask-image: linear-gradient(
+      to bottom,
+      black,
+      transparent 80%
+    );
   }
 
   body,
   html {
-    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+  }
+
+  ::selection {
+    background: rgba(255, 255, 255, 0.9);
+    color: #050505;
   }
 
   a,
@@ -33,13 +80,125 @@
     -webkit-tap-highlight-color: transparent;
   }
 
+  button {
+    font: inherit;
+  }
+
   img {
     display: block;
     max-width: 100%;
   }
+}
 
-  ::selection {
-    background: #ffffff;
-    color: #090909;
+/* -------------------------------- */
+/* Liquid glass system              */
+/* -------------------------------- */
+
+@layer components {
+  .glass {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.09),
+        rgba(255, 255, 255, 0.025)
+      );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.025),
+      0 25px 80px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+  }
+
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 20px 60px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+
+  .glass-button {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.14),
+        rgba(255, 255, 255, 0.055)
+      );
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      0 12px 35px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .glass-button:hover {
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.07)
+      );
+    border-color: rgba(255, 255, 255, 0.25);
+  }
+
+  .glass-highlight {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-highlight::before {
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.08),
+      transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.8s ease;
+  }
+
+  .glass-highlight:hover::before {
+    left: 150%;
+  }
+}
+
+/* -------------------------------- */
+/* Ambient lighting                 */
+/* -------------------------------- */
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(90px);
+}
+
+.ambient-blue {
+  background: rgba(59, 130, 246, 0.13);
+}
+
+.ambient-white {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* -------------------------------- */
+/* Utility                          */
+/* -------------------------------- */
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
   }
 }

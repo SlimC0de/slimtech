@@ -1,43 +1,61 @@
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Mail, Sparkles } from "lucide-react";
+import { siteData } from "../data/siteData";
 
 export default function CTA() {
   return (
-    <section id="contact" className="bg-[#090909]">
-      <div className="mx-auto max-w-[1400px] px-6 py-24 lg:px-10 lg:py-36">
+    <section
+      id="contact"
+      className="relative overflow-hidden bg-[#050505]"
+    >
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/[0.08] blur-[120px]" />
+
+      <div className="relative mx-auto max-w-7xl px-6 py-28 md:px-10 lg:px-14 lg:py-36">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.8 }}
-          className="border-t border-white/10 pt-16 md:pt-24"
+          initial={{ opacity: 0, scale: 0.97, y: 30 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.9,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          className="glass glass-highlight relative overflow-hidden rounded-[2.5rem] p-8 text-center md:p-14 lg:p-20"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/35">
-            Start a project
-          </p>
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.12),transparent_45%)]" />
 
-          <h2 className="mt-6 max-w-5xl text-[clamp(3rem,8vw,8rem)] font-semibold leading-[0.9] tracking-[-0.065em]">
-            Have an idea
-            <br />
-            <span className="text-white/35">worth building?</span>
-          </h2>
+          <div className="relative">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/[0.05]">
+              <Sparkles size={18} className="text-blue-300" />
+            </div>
 
-          <div className="mt-12 flex flex-col justify-between gap-10 md:flex-row md:items-end">
-            <p className="max-w-md text-base leading-7 text-white/45">
-              Tell us what you're building and let's turn the idea into a
-              digital product people will remember.
+            <p className="mt-7 text-[10px] uppercase tracking-[0.3em] text-white/30">
+              06 — Start something new
             </p>
 
-            <a
-              href="mailto:hello@slimtech.dev"
-              className="group flex w-fit items-center gap-3 border-b border-white/30 pb-3 text-lg font-medium transition-colors hover:border-white"
-            >
-              hello@slimtech.dev
-              <ArrowUpRight
-                size={20}
-                className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-              />
-            </a>
+            <h2 className="mx-auto mt-6 max-w-5xl text-[clamp(3rem,7vw,7rem)] font-semibold leading-[0.88] tracking-[-0.07em] text-white">
+              Have an idea?
+              <br />
+              <span className="text-white/25">Let's build it.</span>
+            </h2>
+
+            <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-white/40">
+              Tell us what you're thinking, what you're trying to solve,
+              or simply where you'd like to go next.
+            </p>
+
+            <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href={`mailto:${siteData.email}`}
+                className="glass-button glass-highlight group flex items-center gap-3 rounded-full px-6 py-3.5 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-1"
+              >
+                <Mail size={16} />
+                {siteData.email}
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

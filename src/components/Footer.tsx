@@ -1,48 +1,70 @@
 import { ArrowUpRight } from "lucide-react";
+import { siteData } from "../data/siteData";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#090909]">
-      <div className="mx-auto max-w-[1400px] px-6 py-10 lg:px-10">
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-center">
-          <div>
-            <p className="text-xl font-bold tracking-[-0.04em]">
-              Slim<span className="text-white/40">Tech</span>
-            </p>
+    <footer className="relative overflow-hidden bg-[#050505]">
+      <div className="mx-auto max-w-7xl px-6 pb-8 md:px-10 lg:px-14">
+        <div className="border-t border-white/[0.08] pt-8">
+          <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <div>
+              <a
+                href="#"
+                className="text-2xl font-semibold tracking-[-0.06em] text-white"
+              >
+                Slim<span className="text-white/35">Tech</span>
+              </a>
 
-            <p className="mt-2 text-sm text-white/30">
-              Digital products, built to stand out.
-            </p>
+              <p className="mt-3 max-w-sm text-xs leading-6 text-white/25">
+                Digital products, websites and mobile experiences built
+                with care.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <a
+                href="#work"
+                className="glass-soft rounded-full px-4 py-2.5 text-xs text-white/40 transition-colors hover:text-white"
+              >
+                Work
+              </a>
+
+              <a
+                href="#services"
+                className="glass-soft rounded-full px-4 py-2.5 text-xs text-white/40 transition-colors hover:text-white"
+              >
+                Services
+              </a>
+
+              <a
+                href="#about"
+                className="glass-soft rounded-full px-4 py-2.5 text-xs text-white/40 transition-colors hover:text-white"
+              >
+                About
+              </a>
+
+              <a
+                href="#contact"
+                className="glass-button group flex items-center gap-2 rounded-full px-4 py-2.5 text-xs text-white"
+              >
+                Contact
+                <ArrowUpRight
+                  size={13}
+                  className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                />
+              </a>
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-6 text-sm text-white/40">
-            <a href="#work" className="transition-colors hover:text-white">
-              Work
-            </a>
+          <div className="mt-10 flex flex-col gap-2 border-t border-white/[0.06] pt-5 text-[10px] uppercase tracking-[0.18em] text-white/20 sm:flex-row sm:items-center sm:justify-between">
+            <span>
+              © {new Date().getFullYear()} SlimTech
+            </span>
 
-            <a
-              href="#services"
-              className="transition-colors hover:text-white"
-            >
-              Services
-            </a>
-
-            <a href="#about" className="transition-colors hover:text-white">
-              About
-            </a>
-
-            <a
-              href="mailto:hello@slimtech.dev"
-              className="group flex items-center gap-1 transition-colors hover:text-white"
-            >
-              Email
-              <ArrowUpRight size={14} />
-            </a>
+            <span>
+              {siteData.tagline}
+            </span>
           </div>
-        </div>
-
-        <div className="mt-10 border-t border-white/10 pt-6 text-xs text-white/25">
-          © {new Date().getFullYear()} SlimTech. All rights reserved.
         </div>
       </div>
     </footer>
