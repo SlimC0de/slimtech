@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 @layer base {
@@ -10,7 +9,7 @@
 
   html {
     scroll-behavior: smooth;
-    background: #050505;
+    background: #f4f6f8;
   }
 
   body {
@@ -19,16 +18,23 @@
     background:
       radial-gradient(
         circle at 50% -10%,
-        rgba(255, 255, 255, 0.08),
-        transparent 38%
+        rgba(255, 255, 255, 0.95),
+        transparent 42%
       ),
       radial-gradient(
-        circle at 85% 30%,
-        rgba(59, 130, 246, 0.07),
+        circle at 85% 20%,
+        rgba(59, 130, 246, 0.10),
         transparent 30%
       ),
-      #050505;
-    color: #f5f5f5;
+      radial-gradient(
+        circle at 10% 55%,
+        rgba(96, 165, 250, 0.07),
+        transparent 28%
+      ),
+      #f4f6f8;
+
+    color: #111827;
+
     font-family:
       Inter,
       system-ui,
@@ -36,6 +42,7 @@
       BlinkMacSystemFont,
       "Segoe UI",
       sans-serif;
+
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -46,17 +53,20 @@
     z-index: -1;
     pointer-events: none;
     content: "";
+
     background-image:
       linear-gradient(
-        rgba(255, 255, 255, 0.018) 1px,
+        rgba(15, 23, 42, 0.025) 1px,
         transparent 1px
       ),
       linear-gradient(
         90deg,
-        rgba(255, 255, 255, 0.018) 1px,
+        rgba(15, 23, 42, 0.025) 1px,
         transparent 1px
       );
+
     background-size: 80px 80px;
+
     mask-image: linear-gradient(
       to bottom,
       black,
@@ -67,12 +77,12 @@
   body,
   html {
     scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    scrollbar-color: rgba(15, 23, 42, 0.2) transparent;
   }
 
   ::selection {
-    background: rgba(255, 255, 255, 0.9);
-    color: #050505;
+    background: rgba(59, 130, 246, 0.2);
+    color: #0f172a;
   }
 
   a,
@@ -90,62 +100,83 @@
   }
 }
 
-/* -------------------------------- */
-/* Liquid glass system              */
-/* -------------------------------- */
-
 @layer components {
+  /* Main liquid glass */
   .glass {
     background:
       linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.09),
-        rgba(255, 255, 255, 0.025)
+        rgba(255, 255, 255, 0.78),
+        rgba(255, 255, 255, 0.48)
       );
-    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.9);
+
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.14),
-      inset 0 -1px 0 rgba(255, 255, 255, 0.025),
-      0 25px 80px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(24px) saturate(150%);
-    -webkit-backdrop-filter: blur(24px) saturate(150%);
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+      0 25px 70px rgba(15, 23, 42, 0.08);
+
+    backdrop-filter: blur(28px) saturate(150%);
+    -webkit-backdrop-filter: blur(28px) saturate(150%);
   }
 
+  /* Softer glass */
   .glass-soft {
-    background: rgba(255, 255, 255, 0.045);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.48);
+
+    border: 1px solid rgba(255, 255, 255, 0.75);
+
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 20px 60px rgba(0, 0, 0, 0.22);
-    backdrop-filter: blur(20px) saturate(140%);
-    -webkit-backdrop-filter: blur(20px) saturate(140%);
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 15px 45px rgba(15, 23, 42, 0.055);
+
+    backdrop-filter: blur(22px) saturate(145%);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
   }
 
+  /* Glass buttons */
   .glass-button {
     background:
       linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.14),
-        rgba(255, 255, 255, 0.055)
+        rgba(255, 255, 255, 0.9),
+        rgba(255, 255, 255, 0.58)
       );
-    border: 1px solid rgba(255, 255, 255, 0.16);
+
+    border: 1px solid rgba(255, 255, 255, 0.95);
+
+    color: #111827;
+
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.18),
-      0 12px 35px rgba(0, 0, 0, 0.22);
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      0 12px 30px rgba(15, 23, 42, 0.08);
+
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
+
+    transition:
+      background 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .glass-button:hover {
     background:
       linear-gradient(
         135deg,
-        rgba(255, 255, 255, 0.2),
-        rgba(255, 255, 255, 0.07)
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.72)
       );
-    border-color: rgba(255, 255, 255, 0.25);
+
+    border-color: rgba(255, 255, 255, 1);
+
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 1),
+      0 16px 40px rgba(15, 23, 42, 0.11);
   }
 
+  /* Moving glass reflection */
   .glass-highlight {
     position: relative;
     overflow: hidden;
@@ -157,15 +188,21 @@
     left: -120%;
     width: 70%;
     height: 100%;
+
     content: "";
+
     pointer-events: none;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(255, 255, 255, 0.08),
-      transparent
-    );
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      );
+
     transform: skewX(-20deg);
+
     transition: left 0.8s ease;
   }
 
@@ -174,10 +211,7 @@
   }
 }
 
-/* -------------------------------- */
-/* Ambient lighting                 */
-/* -------------------------------- */
-
+/* Ambient light */
 .ambient-orb {
   position: absolute;
   border-radius: 9999px;
@@ -190,15 +224,159 @@
 }
 
 .ambient-white {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.8);
 }
-
-/* -------------------------------- */
-/* Utility                          */
-/* -------------------------------- */
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* =========================================================
+   LIGHT LIQUID GLASS OVERRIDES
+   Keeps the existing components but converts the old
+   dark utility classes to the new bright visual language.
+   ========================================================= */
+
+/* Page backgrounds */
+.bg-\[\#050505\] {
+  background-color: transparent !important;
+}
+
+/* Main white text */
+.text-white {
+  color: #111827 !important;
+}
+
+/* White opacity text */
+.text-white\/90 {
+  color: rgba(15, 23, 42, 0.9) !important;
+}
+
+.text-white\/80 {
+  color: rgba(15, 23, 42, 0.8) !important;
+}
+
+.text-white\/70 {
+  color: rgba(15, 23, 42, 0.7) !important;
+}
+
+.text-white\/65 {
+  color: rgba(15, 23, 42, 0.65) !important;
+}
+
+.text-white\/60 {
+  color: rgba(15, 23, 42, 0.6) !important;
+}
+
+.text-white\/55 {
+  color: rgba(15, 23, 42, 0.55) !important;
+}
+
+.text-white\/50 {
+  color: rgba(15, 23, 42, 0.5) !important;
+}
+
+.text-white\/45 {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+
+.text-white\/40 {
+  color: rgba(15, 23, 42, 0.4) !important;
+}
+
+.text-white\/35 {
+  color: rgba(15, 23, 42, 0.35) !important;
+}
+
+.text-white\/30 {
+  color: rgba(15, 23, 42, 0.3) !important;
+}
+
+.text-white\/25 {
+  color: rgba(15, 23, 42, 0.25) !important;
+}
+
+.text-white\/20 {
+  color: rgba(15, 23, 42, 0.2) !important;
+}
+
+/* Borders */
+.border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.09) !important;
+}
+
+.border-white\/15 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+.border-white\/\[0\.06\] {
+  border-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+.border-white\/\[0\.07\] {
+  border-color: rgba(15, 23, 42, 0.07) !important;
+}
+
+.border-white\/\[0\.08\] {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Dark translucent surfaces */
+.bg-black\/30 {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+.bg-black\/20 {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* White translucent surfaces */
+.bg-white\/\[0\.03\] {
+  background: rgba(255, 255, 255, 0.38) !important;
+}
+
+.bg-white\/\[0\.04\] {
+  background: rgba(255, 255, 255, 0.42) !important;
+}
+
+.bg-white\/\[0\.05\] {
+  background: rgba(255, 255, 255, 0.45) !important;
+}
+
+.bg-white\/\[0\.06\] {
+  background: rgba(255, 255, 255, 0.48) !important;
+}
+
+.bg-white\/\[0\.07\] {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.bg-white\/10 {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Dark gradients used over project images */
+.from-black\/70 {
+  --tw-gradient-from: rgba(15, 23, 42, 0.5) !important;
+}
+
+.from-black\/55 {
+  --tw-gradient-from: rgba(15, 23, 42, 0.4) !important;
+}
+
+.from-black\/50 {
+  --tw-gradient-from: rgba(15, 23, 42, 0.35) !important;
+}
+
+.via-black\/10 {
+  --tw-gradient-via: rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Make the large project images feel brighter */
+img {
+  transition:
+    transform 0.8s ease,
+    filter 0.8s ease;
 }
