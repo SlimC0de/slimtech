@@ -1,5 +1,3 @@
-import schoolImage from "../assets/jocups-school.png";
-
 export const siteData = {
   name: "SlimTech",
 
@@ -38,6 +36,8 @@ export const siteData = {
   ],
 
   projects: [
+   
+
     {
       number: "01",
       slug: "jocups-kids-school",
@@ -45,7 +45,8 @@ export const siteData = {
       category: "School Website",
       description:
         "A modern school website created to showcase academics, admissions, campus life and the school's community through a polished digital experience.",
-      image: schoolImage,
+      image:
+        "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     },
 
