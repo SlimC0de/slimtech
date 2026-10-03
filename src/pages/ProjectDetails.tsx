@@ -153,9 +153,17 @@ export default function ProjectDetail() {
                 </p>
               </div>
 
-              <div className="glass-soft flex h-11 w-11 items-center justify-center rounded-full text-slate-700">
-                <ArrowUpRight size={17} />
-              </div>
+              {project.link && (
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open ${project.title}`}
+                  className="glass-soft flex h-11 w-11 items-center justify-center rounded-full text-slate-700 transition-transform duration-300 hover:-translate-y-1 hover:translate-x-1"
+                >
+                  <ArrowUpRight size={17} />
+                </a>
+              )}
             </div>
           </div>
         </motion.div>

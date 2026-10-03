@@ -10,18 +10,19 @@ export const siteData = {
     "SlimTech creates modern websites, mobile applications and digital experiences for businesses ready to move forward.",
 
   email: "hello@slimtech.dev",
+  whatsapp: "2348153988773",
 
   founder: {
-    name: "Slim Buu",
+    name: "Henry Ebubechukwu",
     role: "Founder & Software Developer",
     image: founderImage,
     bio:
-      "SlimTech was founded by Slim Buu with a focus on building modern digital products, websites and mobile applications that combine thoughtful design with reliable technology.",
+      "SlimTech was founded by Henry Ebubechukwu with a focus on building modern digital products, websites and mobile applications that combine thoughtful design with reliable technology.",
   },
 
   team: [
     {
-      name: "Slim Buu",
+      name: "Henry Ebubechukwu",
       role: "Founder & Software Developer",
       image: founderImage,
     },
@@ -74,6 +75,7 @@ export const siteData = {
         "A modern school website created to showcase academics, admissions, campus life and the school's community through a polished digital experience.",
       image:
         "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85",
+      link: "https://jocupskidsschool.netlify.app",
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     },
 
@@ -86,6 +88,7 @@ export const siteData = {
         "A new digital experience is currently being designed and developed at SlimTech.",
       image:
         "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1800&q=85",
+      link: "",
       technologies: ["React", "TypeScript", "Tailwind CSS"],
     },
   ],

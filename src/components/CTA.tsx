@@ -1,8 +1,15 @@
+
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Sparkles } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Sparkles } from "lucide-react";
 import { siteData } from "../data/siteData";
 
 export default function CTA() {
+  const whatsappMessage = encodeURIComponent(
+    "Hello SlimTech, I would like to discuss a project with you.",
+  );
+
+  const whatsappLink = `https://wa.me/${siteData.whatsapp}?text=${whatsappMessage}`;
+
   return (
     <section
       id="contact"
@@ -53,12 +60,14 @@ export default function CTA() {
 
             <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href={`mailto:${siteData.email}`}
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="glass-button glass-highlight group flex items-center gap-3 rounded-full px-6 py-3.5 text-sm font-medium text-slate-900 transition-transform duration-300 hover:-translate-y-1"
               >
-                <Mail size={16} />
+                <MessageCircle size={16} />
 
-                {siteData.email}
+                Let's talk on WhatsApp
 
                 <ArrowUpRight
                   size={16}
