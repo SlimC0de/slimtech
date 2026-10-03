@@ -144,9 +144,9 @@ export default function ProjectDetail() {
 
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 md:bottom-7 md:left-7 md:right-7">
               <div className="glass-soft rounded-2xl px-4 py-3 backdrop-blur-2xl">
-                <p className="text-[9px] uppercase tracking-[0.2em] text-slate-400">
-                  Featured project
-                </p>
+               <p className="text-[9px] uppercase tracking-[0.2em] text-slate-500">
+                Featured project
+              </p>
 
                 <p className="mt-1 text-sm text-slate-700">
                   {project.title}

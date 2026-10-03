@@ -1,6 +1,5 @@
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { siteData } from "../data/siteData";
 
@@ -89,10 +88,7 @@ export default function Projects() {
                       {project.number}
                     </div>
 
-                    {/* Arrow */}
-                    <div className="absolute right-5 top-5 flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/20 !text-white backdrop-blur-xl transition-transform duration-500 group-hover:rotate-45">
-                      <ArrowUpRight size={19} />
-                    </div>
+                   
 
                     {/* Image title */}
                     <div className="absolute bottom-6 left-6 right-6 md:bottom-8 md:left-8 md:right-8">
