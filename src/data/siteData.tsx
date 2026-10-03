@@ -1,3 +1,5 @@
+import schoolImage from "../assets/jocups-school.png";
+
 export const siteData = {
   name: "SlimTech",
 
@@ -38,30 +40,17 @@ export const siteData = {
   projects: [
     {
       number: "01",
-      slug: "swifca",
-      title: "Swifca",
-      category: "Marketplace Platform",
-      description:
-        "A modern buying and selling marketplace designed to make discovering products, connecting with sellers and completing purchases simple.",
-      image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1800&q=85",
-      technologies: ["Flutter", "Dart", "Supabase", "Riverpod"],
-    },
-
-    {
-      number: "02",
       slug: "jocups-kids-school",
       title: "Jocups Kids School",
       category: "School Website",
       description:
         "A modern school website created to showcase academics, admissions, campus life and the school's community through a polished digital experience.",
-      image:
-        "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85",
+      image: schoolImage,
       technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     },
 
     {
-      number: "03",
+      number: "02",
       slug: "coming-soon",
       title: "Coming Soon",
       category: "Digital Product",
@@ -80,7 +69,6 @@ export const siteData = {
     "TypeScript",
     "JavaScript",
     "Tailwind CSS",
-    "Supabase",
     "Firebase",
   ],
 

@@ -1,11 +1,10 @@
-
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
 import { siteData } from "../data/siteData";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#050505]">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Ambient lighting */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="ambient-orb ambient-blue left-[-12%] top-[20%] h-[420px] w-[420px] md:h-[600px] md:w-[600px]" />
@@ -30,6 +29,7 @@ export default function Hero() {
       {/* Hero content */}
       <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-6 pb-20 pt-32 md:px-10 lg:px-14">
         <div className="mx-auto w-full max-w-6xl text-center">
+
           {/* Eyebrow */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -37,10 +37,10 @@ export default function Hero() {
             transition={{ duration: 0.7 }}
             className="mb-8 flex justify-center"
           >
-            <div className="glass flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-white/50">
+            <div className="glass flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-slate-500">
               <Sparkles
                 size={12}
-                className="text-blue-300"
+                className="text-blue-500"
               />
 
               Independent digital studio
@@ -56,11 +56,12 @@ export default function Hero() {
               delay: 0.1,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="text-balance text-[clamp(3.5rem,10vw,9rem)] font-semibold leading-[0.86] tracking-[-0.075em] text-white"
+            className="text-balance text-[clamp(3.5rem,10vw,9rem)] font-semibold leading-[0.86] tracking-[-0.075em] text-slate-900"
           >
             Digital products
             <br />
-            <span className="bg-gradient-to-r from-white via-white/65 to-white/25 bg-clip-text text-transparent">
+
+            <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-400 bg-clip-text text-transparent">
               made beautifully.
             </span>
           </motion.h1>
@@ -73,7 +74,7 @@ export default function Hero() {
               duration: 0.8,
               delay: 0.35,
             }}
-            className="mx-auto mt-9 max-w-2xl text-sm leading-7 text-white/45 md:text-base"
+            className="mx-auto mt-9 max-w-2xl text-sm leading-7 text-slate-500 md:text-base"
           >
             {siteData.description}
           </motion.p>
@@ -90,7 +91,7 @@ export default function Hero() {
           >
             <a
               href="#work"
-              className="glass-button glass-highlight group flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-white transition-transform duration-300 hover:-translate-y-1"
+              className="glass-button glass-highlight group flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-transform duration-300 hover:-translate-y-1"
             >
               View our work
 
@@ -102,7 +103,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm text-white/50 transition-colors duration-300 hover:text-white"
+              className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm text-slate-500 transition-colors duration-300 hover:text-slate-900"
             >
               Start a project
             </a>
@@ -127,11 +128,13 @@ export default function Hero() {
           className="relative mx-auto mt-20 w-full max-w-5xl"
         >
           <div className="glass relative overflow-hidden rounded-[2rem] p-2">
-            {/* Inner glow */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.12),transparent_50%)]" />
 
-            <div className="relative flex min-h-[190px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-white/[0.06] bg-black/30 md:min-h-[260px]">
-              {/* Decorative orb */}
+            {/* Inner light */}
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.8),transparent_55%)]" />
+
+            <div className="relative flex min-h-[190px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/35 md:min-h-[260px]">
+
+              {/* Decorative ring */}
               <motion.div
                 animate={{
                   rotate: 360,
@@ -141,28 +144,29 @@ export default function Hero() {
                   repeat: Infinity,
                   ease: "linear",
                 }}
-                className="absolute h-32 w-32 rounded-full border border-white/10 md:h-48 md:w-48"
+                className="absolute h-32 w-32 rounded-full border border-slate-300/50 md:h-48 md:w-48"
               />
 
+              {/* Blue glow */}
               <motion.div
                 animate={{
                   scale: [1, 1.15, 1],
-                  opacity: [0.4, 0.7, 0.4],
+                  opacity: [0.25, 0.5, 0.25],
                 }}
                 transition={{
                   duration: 5,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute h-20 w-20 rounded-full bg-blue-400/10 blur-2xl md:h-32 md:w-32"
+                className="absolute h-20 w-20 rounded-full bg-blue-400/20 blur-2xl md:h-32 md:w-32"
               />
 
               <div className="relative text-center">
-                <p className="text-[10px] uppercase tracking-[0.35em] text-white/25">
+                <p className="text-[10px] uppercase tracking-[0.35em] text-slate-400">
                   SlimTech
                 </p>
 
-                <p className="mt-3 text-sm text-white/45 md:text-base">
+                <p className="mt-3 text-sm text-slate-500 md:text-base">
                   Websites · Mobile Apps · Digital Products
                 </p>
               </div>
@@ -176,7 +180,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4 }}
-          className="mx-auto mt-12 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-white/25 transition-colors hover:text-white/60"
+          className="mx-auto mt-12 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-slate-400 transition-colors hover:text-slate-700"
         >
           Explore
 
