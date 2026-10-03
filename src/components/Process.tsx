@@ -64,7 +64,7 @@ export default function Process() {
               <div className="pointer-events-none absolute right-[-25%] top-[-25%] h-40 w-40 rounded-full bg-blue-500/[0.06] blur-[60px] transition-all duration-500 group-hover:bg-blue-500/[0.1]" />
 
               <div className="relative">
-                {/* Number */}
+               {/* Number */}
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-slate-400">
                     Step
@@ -76,7 +76,7 @@ export default function Process() {
                 </div>
 
                 {/* Title */}
-                <h3 className="mt-16 text-2xl font-semibold tracking-[-0.04em] text-slate-900">
+                <h3 className="mt-6 text-2xl font-semibold tracking-[-0.04em] text-slate-900">
                   {item.title}
                 </h3>
 
