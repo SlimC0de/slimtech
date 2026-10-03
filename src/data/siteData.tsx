@@ -1,3 +1,6 @@
+
+import founderImage from "../assets/founder.jpeg";
+
 export const siteData = {
   name: "SlimTech",
 
@@ -7,6 +10,32 @@ export const siteData = {
     "SlimTech creates modern websites, mobile applications and digital experiences for businesses ready to move forward.",
 
   email: "hello@slimtech.dev",
+
+  founder: {
+    name: "Slim Buu",
+    role: "Founder & Software Developer",
+    image: founderImage,
+    bio:
+      "SlimTech was founded by Slim Buu with a focus on building modern digital products, websites and mobile applications that combine thoughtful design with reliable technology.",
+  },
+
+  team: [
+    {
+      name: "Slim Buu",
+      role: "Founder & Software Developer",
+      image: founderImage,
+    },
+    {
+      name: "Coming Soon",
+      role: "Team Member",
+      image: "",
+    },
+    {
+      name: "Coming Soon",
+      role: "Team Member",
+      image: "",
+    },
+  ],
 
   services: [
     {
@@ -36,8 +65,6 @@ export const siteData = {
   ],
 
   projects: [
-   
-
     {
       number: "01",
       slug: "jocups-kids-school",
