@@ -1,15 +1,120 @@
 
 import founderImage from "../assets/founder.jpeg";
 
+// ─────────────────────────────────────────────────────────────
+// TYPES — COMPATIBLE WITH FRAMES.TSX
+// ─────────────────────────────────────────────────────────────
+
+export type ScreenVariant =
+  | "dashboard"
+  | "store"
+  | "feed"
+  | "wallet"
+  | "fitness";
+
+export interface Project {
+  id: string;
+  title: string;
+  kind: "web" | "mobile";
+  year: string;
+  summary: string;
+  role: string;
+  result: string;
+  stack: string[];
+  accent: string;
+  variant: ScreenVariant;
+  liveUrl?: string;
+  caseStudyUrl?: string;
+  concept?: boolean;
+}
+
+// ─────────────────────────────────────────────────────────────
+// SLIMTECH PROFILE
+// ─────────────────────────────────────────────────────────────
+
+
+// ─────────────────────────────────────────────────────────────
+// PERSONAL PORTFOLIO PROFILE
+// ─────────────────────────────────────────────────────────────
+
+  export const profile = {
+    name: "HebTech",
+    photo: founderImage,
+
+    role: "UI/UX Designer & Web and Mobile App Developer",
+
+    location: "Abuja, Nigeria",
+    email: "[hello@slimtech.dev](mailto:hello@slimtech.dev)",
+    availability: "Available for new projects",
+
+    headline:
+    "I design and build digital experiences that move businesses forward.",
+
+    intro:
+    "I'm a designer and developer focused on creating beautiful, intuitive, and functional digital experiences. From UI/UX design and brand identity to modern websites, mobile applications, and digital products, I turn ideas into practical solutions that help businesses grow.",
+
+    about: [
+    "I'm a designer and developer who believes great digital products need both thoughtful design and reliable technology. I focus on creating intuitive user experiences, clean interfaces, responsive websites, and functional applications that look great and work seamlessly.",
+
+    "I work with individuals, startups, and growing businesses to bring ideas to life through UI/UX design, website development, mobile app development, branding, and custom digital solutions. My approach combines creativity, technical problem-solving, and attention to detail to deliver digital experiences that are useful, engaging, and built to last.",
+
+    ],
+
+    facts: [
+    {
+    label: "Based in",
+    value: "Abuja, Nigeria · Available worldwide",
+    },
+    {
+    label: "Design",
+    value: "UI/UX design, wireframing, prototyping, and visual design",
+    },
+    {
+    label: "Development",
+    value: "Websites, mobile apps, and digital products",
+    },
+    {
+    label: "Working with",
+    value: "Startups, businesses, and individuals",
+    },
+    {
+    label: "Approach",
+    value: "Creative thinking, thoughtful design, quality code",
+    },
+
+  ],
+
+  links: [
+    {
+      label: "GitHub",
+      href: "https://github.com/SlimC0de",
+    },
+    {
+      label: "LinkedIn",
+      href: "/",
+    },
+    {
+      label: "WhatsApp",
+      href: "https://wa.me/2348153988773?text=Hello%20HebTech%2C%20I%27m%20interested%20in%20your%20services.",
+    },
+  ],
+};
+
+// ─────────────────────────────────────────────────────────────
+// MAIN AGENCY DATA
+// Keeps compatibility with existing SlimTech pages.
+// ─────────────────────────────────────────────────────────────
+
 export const siteData = {
   name: "SlimTech",
 
   tagline: "Digital products, built to stand out.",
 
   description:
-    "SlimTech creates modern websites, mobile applications and digital experiences for businesses ready to move forward.",
+    "We create modern websites, mobile applications, digital products and practical learning experiences for businesses ready to move forward.",
 
   email: "hello@slimtech.dev",
+
   whatsapp: "2348153988773",
 
   founder: {
@@ -17,7 +122,7 @@ export const siteData = {
     role: "Founder & Software Developer",
     image: founderImage,
     bio:
-      "SlimTech was founded by Henry Ebubechukwu with a focus on building modern digital products, websites and mobile applications that combine thoughtful design with reliable technology.",
+      "SlimTech focuses on building modern digital products, websites and mobile applications that combine thoughtful design with reliable technology.",
   },
 
   team: [
@@ -39,68 +144,87 @@ export const siteData = {
   ],
 
   services: [
-    {
+   {
       number: "01",
-      title: "Web Development",
+      title: "UI & UX Design",
       description:
-        "High-performance websites designed to look exceptional, communicate clearly and turn visitors into customers.",
+        "Clear, intuitive interfaces that make websites and applications easier to understand, navigate and use.",
     },
     {
       number: "02",
-      title: "Mobile Applications",
+      title: "Web Development",
       description:
-        "Modern mobile applications built for Android and iOS with thoughtful interfaces, smooth experiences and reliable performance.",
+        "High-performance, responsive websites designed to communicate clearly, build trust and turn visitors into customers.",
     },
     {
       number: "03",
-      title: "Digital Products",
+      title: "Mobile Applications",
       description:
-        "From marketplaces to custom platforms, we transform ideas into practical digital products built for real users.",
+        "Modern Android and iOS applications with thoughtful interfaces, smooth experiences and dependable functionality.",
     },
     {
       number: "04",
-      title: "UI & UX",
+      title: "Digital Products",
       description:
-        "Clear, intuitive interfaces that make digital products easier to understand, navigate and use.",
+        "From marketplaces and business dashboards to custom platforms, we turn ideas into practical digital products.",
     },
+   
   ],
 
-  projects: [
-    {
-      number: "01",
-      slug: "jocups-kids-school",
-      title: "Jocups Kids School",
-      category: "School Website",
-      description:
-        "A modern school website created to showcase academics, admissions, campus life and the school's community through a polished digital experience.",
-      image:
-        "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1800&q=85",
-      link: "https://jocupskidsschool.netlify.app",
-      technologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
-    },
+  // Actual client work only.
+  // Keep concept projects in the separate projects export below.
 
-    {
-      number: "02",
-      slug: "coming-soon",
-      title: "Coming Soon",
-      category: "Digital Product",
-      description:
-        "A new digital experience is currently being designed and developed at SlimTech.",
-      image:
-        "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1800&q=85",
-      link: "",
-      technologies: ["React", "TypeScript", "Tailwind CSS"],
-    },
-  ],
+    projects: [
+      {
+        number: "01",
+        slug: "Jpcups-kids-school",
+        title: "Jocups Kids School",
+        category: "School Website",
+        description:
+          "A school website showcasing the institution, academic programmes and admissions information.",
+        link: "https://jocupskidsschoolng.netlify.app/",
+        technologies: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vite",
+        ],
+      },
+      {
+        number: "02",
+        slug: "mobile-app-ui-ux",
+        title: "Mobile App UI/UX Design",
+        category: "Mobile App Design",
+        description:
+        "A clean, modern mobile app experience focused on intuitive navigation, thoughtful layouts, clear data presentation, and seamless interactions. Designed to make complex information simple, accessible, and easy to use.",
+        link: "https://www.behance.net/gallery/130500581/Dashboard-design-%28Mobile-view%29",
+        image:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb33f1130500581.6181832690289.jpg",
+        technologies: [
+        "UI Design",
+        "UX Design",
+        "Mobile App Design",
+        "Prototyping",
+        "Interaction Design",
+        ],
+      }
+
+    ],
+
+
 
   technologies: [
-    "Flutter",
-    "Dart",
     "React",
     "TypeScript",
     "JavaScript",
     "Tailwind CSS",
+    "Vite",
+    "Flutter",
+    "Dart",
+    "React Native",
     "Firebase",
+    "Supabase",
+    "Node.js",
   ],
 
   process: [
@@ -108,25 +232,207 @@ export const siteData = {
       number: "01",
       title: "Discover",
       description:
-        "We understand the idea, the business and the people the product is being built for.",
+        "We understand your idea, your business and the people your product needs to serve.",
     },
     {
       number: "02",
       title: "Design",
       description:
-        "We shape the structure, interface and experience before turning the idea into a product.",
+        "We shape the structure, interface and user experience before moving into development.",
     },
     {
       number: "03",
       title: "Build",
       description:
-        "We develop the product with clean, scalable technology and attention to detail.",
+        "We develop your product in stages, sharing progress and refining the details along the way.",
     },
     {
       number: "04",
       title: "Launch",
       description:
-        "We prepare the finished product for real users and help bring the idea into the world.",
+        "We prepare your product for launch and can help with maintenance, technical support and future improvements.",
     },
   ],
 };
+
+// ─────────────────────────────────────────────────────────────
+// HERO & PORTFOLIO MOCK PROJECTS
+// These are illustrative UI concepts, not verified client results.
+// ─────────────────────────────────────────────────────────────
+
+export const projects: Project[] = [
+  {
+    id: "ledgerline",
+    title: "Ledgerline",
+    kind: "web",
+    year: "Concept",
+    summary:
+      "A finance dashboard concept for monitoring cash flow, invoices and business activity in one place.",
+    role: "UI concept",
+    result:
+      "Illustrates a possible business dashboard experience.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+    ],
+    accent: "#5b6cff",
+    variant: "dashboard",
+    concept: true,
+  },
+  {
+    id: "pocketpay",
+    title: "PocketPay",
+    kind: "mobile",
+    year: "Concept",
+    summary:
+      "A mobile wallet concept for exploring payments, balances and everyday financial activity.",
+    role: "Mobile UI concept",
+    result:
+      "Illustrates a possible mobile finance experience.",
+    stack: [
+      "React Native",
+      "TypeScript",
+      "Expo",
+    ],
+    accent: "#f59e0b",
+    variant: "wallet",
+    concept: true,
+  },
+  {
+    id: "marketsquare",
+    title: "Market Square",
+    kind: "web",
+    year: "Concept",
+    summary:
+      "An online storefront concept designed to showcase products and simplify the shopping experience.",
+    role: "E-commerce UI concept",
+    result:
+      "Illustrates a possible online storefront experience.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+    ],
+    accent: "#10b981",
+    variant: "store",
+    concept: true,
+  },
+  {
+    id: "stride",
+    title: "Stride",
+    kind: "mobile",
+    year: "Concept",
+    summary:
+      "A fitness app concept featuring activity progress, workout tracking and daily goals.",
+    role: "Mobile UI concept",
+    result:
+      "Illustrates a possible fitness tracking experience.",
+    stack: [
+      "React Native",
+      "TypeScript",
+      "Expo",
+    ],
+    accent: "#ec4899",
+    variant: "fitness",
+    concept: true,
+  },
+  {
+    id: "circle",
+    title: "Circle",
+    kind: "mobile",
+    year: "Concept",
+    summary:
+      "A community app concept for sharing announcements, updates and neighborhood activities.",
+    role: "Mobile UI concept",
+    result:
+      "Illustrates a possible community experience.",
+    stack: [
+      "Flutter",
+      "Dart",
+      "Supabase",
+    ],
+    accent: "#0ea5e9",
+    variant: "feed",
+    concept: true,
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// SKILLS
+// ─────────────────────────────────────────────────────────────
+
+export const skills = [
+  {
+    group: "Web Development",
+    items: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Vite",
+      "Responsive Design",
+      "Accessibility",
+    ],
+  },
+  {
+    group: "Mobile Development",
+    items: [
+      "Flutter",
+      "Dart",
+      "React Native",
+      "Expo",
+      "Firebase",
+      "Supabase",
+    ],
+  },
+  {
+    group: "Backend & Tooling",
+    items: [
+      "Node.js",
+      "REST APIs",
+      "PostgreSQL",
+      "Git",
+      "CI/CD",
+      "Testing",
+    ],
+  },
+  {
+    group: "Design & Delivery",
+    items: [
+      "UI/UX Design",
+      "Prototyping",
+      "Product Planning",
+      "Deployment",
+      "Technical Support",
+    ],
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// PROJECT PROCESS
+// ─────────────────────────────────────────────────────────────
+
+export const process = [
+  {
+    title: "Understand the problem",
+    body:
+      "We start by understanding who the product is for and what success looks like, then agree on a scope that fits your goals and budget.",
+  },
+  {
+    title: "Design and prototype",
+    body:
+      "We shape the interface and experience early, making it easier to review ideas and refine the details before development progresses.",
+  },
+  {
+    title: "Build in stages",
+    body:
+      "We develop the product in manageable stages, sharing progress and gathering feedback throughout the process.",
+  },
+  {
+    title: "Launch and support",
+    body:
+      "We prepare the product for launch and can provide ongoing maintenance, technical support and improvements.",
+  },
+];

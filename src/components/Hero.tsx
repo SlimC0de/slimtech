@@ -1,195 +1,96 @@
-import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Sparkles } from "lucide-react";
-import { siteData } from "../data/siteData";
+
+import type { CSSProperties } from "react";
+import { profile, projects } from "../data/siteData";
+import { BrowserFrame, PhoneFrame, Screen } from "./Frames";
+
+const idx = (i: number) => ({ "--i": i }) as CSSProperties;
 
 export default function Hero() {
+  const web = projects.find((p) => p.kind === "web")!;
+  const mobile = projects.find((p) => p.kind === "mobile")!;
+
   return (
-    <section className="relative overflow-hidden">
-      {/* Ambient lighting */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="ambient-orb ambient-blue left-[-12%] top-[20%] h-[420px] w-[420px] md:h-[600px] md:w-[600px]" />
+    <section id="top" className="relative overflow-hidden">
+      {/* Subtle background accent */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-40 top-10 size-[28rem] rounded-full bg-iris/10 blur-[100px]"
+      />
 
-        <div className="ambient-orb ambient-white right-[-10%] top-[5%] h-[350px] w-[350px] md:h-[500px] md:w-[500px]" />
-
-        <motion.div
-          animate={{
-            x: [0, 40, 0],
-            y: [0, -30, 0],
-            scale: [1, 1.08, 1],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="ambient-orb ambient-blue bottom-[-15%] left-[35%] h-[400px] w-[400px]"
-        />
-      </div>
-
-      {/* Hero content */}
-      <div className="relative mx-auto flex max-w-7xl flex-col px-6 pb-14 pt-28 md:px-10 md:pb-16 md:pt-32 lg:px-14">
-        <div className="mx-auto w-full max-w-6xl text-center">
-
-          {/* Eyebrow */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            className="mb-7 flex justify-center"
+      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-24 lg:pt-32">
+        {/* Introduction */}
+        <div>
+          <p
+            className="hero-in inline-flex items-center gap-2 rounded-full border border-line px-3 py-1 text-xs text-muted sm:text-sm"
+            style={idx(0)}
           >
-            <div className="glass flex items-center gap-2 rounded-full px-4 py-2 text-[10px] font-medium uppercase tracking-[0.22em] text-slate-500">
-              <Sparkles
-                size={12}
-                className="text-blue-500"
-              />
+            <img
+              src={profile.photo}
+              alt=""
+              className="size-5 rounded-full object-cover"
+            />
+            {profile.availability}
+          </p>
 
-              Independent digital studio
-            </div>
-          </motion.div>
-
-          {/* Main heading */}
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 1,
-              delay: 0.1,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="text-balance text-[clamp(3.5rem,10vw,9rem)] font-semibold leading-[0.86] tracking-[-0.075em] text-slate-900"
+          <h1
+            className="hero-in mt-5 max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            style={idx(1)}
           >
-            Digital products
-            <br />
+            {profile.headline}
+          </h1>
 
-            <span className="bg-gradient-to-r from-slate-900 via-slate-700 to-slate-400 bg-clip-text text-transparent">
-              made beautifully.
-            </span>
-          </motion.h1>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.35,
-            }}
-            className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-slate-500 md:text-base"
+          <p
+            className="hero-in mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
+            style={idx(2)}
           >
-            {siteData.description}
-          </motion.p>
+            {profile.intro}
+          </p>
 
-          {/* Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.8,
-              delay: 0.45,
-            }}
-            className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+          <div
+            className="hero-in mt-7 flex flex-wrap items-center gap-3"
+            style={idx(3)}
           >
             <a
               href="#work"
-              className="glass-button glass-highlight group flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-transform duration-300 hover:-translate-y-1"
+              className="rounded-full bg-iris px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:px-6 sm:py-3 sm:text-base"
             >
-              View our work
-
-              <ArrowUpRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
+              See selected work
             </a>
 
             <a
               href="#contact"
-              className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm text-slate-500 transition-colors duration-300 hover:text-slate-900"
+              className="rounded-full border border-line px-5 py-2.5 text-sm font-semibold transition-colors hover:border-iris hover:text-iris sm:px-6 sm:py-3 sm:text-base"
             >
               Start a project
             </a>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Floating glass panel */}
-        <motion.div
-          initial={{
-            opacity: 0,
-            y: 40,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 1,
-            delay: 0.65,
-            ease: [0.22, 1, 0.36, 1],
-          }}
-          className="relative mx-auto mt-14 w-full max-w-5xl"
+        {/* Web and mobile application previews */}
+        <div
+          className="relative mx-auto w-full max-w-lg pb-8 lg:pb-0"
+          aria-label="Preview of a web app and a mobile app"
         >
-          <div className="glass relative overflow-hidden rounded-[2rem] p-2">
-
-            {/* Inner light */}
-            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.8),transparent_55%)]" />
-
-            <div className="relative flex min-h-[170px] items-center justify-center overflow-hidden rounded-[1.5rem] border border-slate-200/70 bg-white/35 md:min-h-[230px]">
-
-              {/* Decorative ring */}
-              <motion.div
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  duration: 25,
-                  repeat: Infinity,
-                  ease: "linear",
-                }}
-                className="absolute h-32 w-32 rounded-full border border-slate-300/50 md:h-48 md:w-48"
-              />
-
-              {/* Blue glow */}
-              <motion.div
-                animate={{
-                  scale: [1, 1.15, 1],
-                  opacity: [0.25, 0.5, 0.25],
-                }}
-                transition={{
-                  duration: 5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                className="absolute h-20 w-20 rounded-full bg-blue-400/20 blur-2xl md:h-32 md:w-32"
-              />
-
-              <div className="relative text-center">
-                <p className="text-[10px] uppercase tracking-[0.35em] text-slate-400">
-                  SlimTech
-                </p>
-
-                <p className="mt-3 text-sm text-slate-500 md:text-base">
-                  Websites · Mobile Apps · Digital Products
-                </p>
-              </div>
-            </div>
+          <div className="stage-in" style={idx(0)}>
+            <BrowserFrame url={`${web.id}.app`}>
+              <Screen variant={web.variant} accent={web.accent} />
+            </BrowserFrame>
           </div>
-        </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.a
-          href="#work"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="mx-auto mt-8 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-slate-400 transition-colors hover:text-slate-700"
-        >
-          Explore
-
-          <ArrowDown
-            size={13}
-            className="animate-bounce"
-          />
-        </motion.a>
+          <div
+            className="stage-in absolute -bottom-1 right-0 w-[29%] sm:-right-3 lg:-right-6"
+            style={{
+              ...idx(1),
+              ["--r" as string]: "4deg",
+            }}
+          >
+            <PhoneFrame>
+              <Screen variant={mobile.variant} accent={mobile.accent} />
+            </PhoneFrame>
+          </div>
+        </div>
       </div>
     </section>
   );
 }
+

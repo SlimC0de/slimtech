@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -5,17 +6,25 @@ import {
   Smartphone,
   Layers3,
   PenTool,
+  Globe,
+  GraduationCap,
+  Lightbulb,
 } from "lucide-react";
 import { siteData } from "../data/siteData";
 
-const icons = [Code2, Smartphone, Layers3, PenTool];
+const icons = [
+  Code2,
+  Smartphone,
+  Layers3,
+  PenTool,
+  Globe,
+  GraduationCap,
+  Lightbulb,
+];
 
 export default function Services() {
   return (
-    <section
-      id="services"
-      className="relative overflow-hidden"
-    >
+    <section id="services" className="relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-14 lg:py-16">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
           {/* Intro */}
@@ -31,13 +40,9 @@ export default function Services() {
             </p>
 
             <h2 className="mt-5 text-[clamp(3rem,6vw,6rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
-              <span className="text-slate-900">
-                Ideas into
-              </span>
+              <span className="text-slate-900">Ideas into</span>
               <br />
-              <span className="text-slate-400">
-                experiences.
-              </span>
+              <span className="text-slate-400">experiences.</span>
             </h2>
 
             <p className="mt-6 max-w-md text-sm leading-7 text-slate-500">
@@ -49,7 +54,7 @@ export default function Services() {
           {/* Services */}
           <div className="space-y-3">
             {siteData.services.map((service, index) => {
-              const Icon = icons[index];
+              const Icon = icons[index] ?? Code2;
 
               return (
                 <motion.div
