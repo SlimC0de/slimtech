@@ -1,4 +1,3 @@
-
 import type { CSSProperties } from "react";
 import { profile, projects } from "../data/siteData";
 import { BrowserFrame, PhoneFrame, Screen } from "./Frames";
@@ -17,7 +16,7 @@ export default function Hero() {
         className="pointer-events-none absolute -right-40 top-10 size-[28rem] rounded-full bg-iris/10 blur-[100px]"
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 pb-16 pt-28 sm:px-8 sm:pb-20 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-24 lg:pt-32">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 pb-6 pt-24 sm:gap-10 sm:px-8 sm:pb-14 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-24 lg:pt-32">
         {/* Introduction */}
         <div>
           <p
@@ -68,7 +67,7 @@ export default function Hero() {
 
         {/* Web and mobile application previews */}
         <div
-          className="relative mx-auto w-full max-w-lg pb-8 lg:pb-0"
+          className="relative mx-auto w-full max-w-lg pb-2 sm:pb-6 lg:pb-0"
           aria-label="Preview of a web app and a mobile app"
         >
           <div className="stage-in" style={idx(0)}>
@@ -93,4 +92,3 @@ export default function Hero() {
     </section>
   );
 }
-

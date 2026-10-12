@@ -19,9 +19,9 @@ export function BrowserFrame({ children, url = "app.example.com" }: { children: 
 
 export function PhoneFrame({ children }: { children: ReactNode }) {
   return (
-    <div className="relative mx-auto aspect-[9/19] w-full overflow-hidden rounded-[2rem] border-[6px] border-[#1d2842] bg-surface shadow-2xl shadow-slate-900/25">
-      <div className="absolute left-1/2 top-1.5 z-10 h-3.5 w-16 -translate-x-1/2 rounded-full bg-black" />
-      <div className="h-full pt-7">{children}</div>
+    <div className="relative mx-auto aspect-[9/19] w-full overflow-hidden rounded-[1.25rem] border-[4px] border-[#1d2842] bg-surface shadow-2xl shadow-slate-900/25 sm:rounded-[1.75rem] sm:border-[5px] md:rounded-[2rem] md:border-[6px]">
+      <div className="absolute left-1/2 top-1 z-10 h-2.5 w-12 -translate-x-1/2 rounded-full bg-black sm:top-1.5 sm:h-3.5 sm:w-16" />
+      <div className="h-full pt-5 sm:pt-7">{children}</div>
     </div>
   );
 }

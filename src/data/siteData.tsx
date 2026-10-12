@@ -197,7 +197,7 @@ export const siteData = {
         category: "Mobile App Design",
         description:
         "A clean, modern mobile app experience focused on intuitive navigation, thoughtful layouts, clear data presentation, and seamless interactions. Designed to make complex information simple, accessible, and easy to use.",
-        link: "https://www.behance.net/gallery/130500581/Dashboard-design-%28Mobile-view%29",
+        link: "",
         image:
         "https://mir-s3-cdn-cf.behance.net/project_modules/fs/eb33f1130500581.6181832690289.jpg",
         technologies: [
@@ -262,8 +262,8 @@ export const siteData = {
 
 export const projects: Project[] = [
   {
-    id: "ledgerline",
-    title: "Ledgerline",
+    id: "webiste",
+    title: "Website",
     kind: "web",
     year: "Concept",
     summary:
@@ -282,8 +282,8 @@ export const projects: Project[] = [
     concept: true,
   },
   {
-    id: "pocketpay",
-    title: "PocketPay",
+    id: "app",
+    title: "App",
     kind: "mobile",
     year: "Concept",
     summary:
@@ -300,63 +300,7 @@ export const projects: Project[] = [
     variant: "wallet",
     concept: true,
   },
-  {
-    id: "marketsquare",
-    title: "Market Square",
-    kind: "web",
-    year: "Concept",
-    summary:
-      "An online storefront concept designed to showcase products and simplify the shopping experience.",
-    role: "E-commerce UI concept",
-    result:
-      "Illustrates a possible online storefront experience.",
-    stack: [
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-    ],
-    accent: "#10b981",
-    variant: "store",
-    concept: true,
-  },
-  {
-    id: "stride",
-    title: "Stride",
-    kind: "mobile",
-    year: "Concept",
-    summary:
-      "A fitness app concept featuring activity progress, workout tracking and daily goals.",
-    role: "Mobile UI concept",
-    result:
-      "Illustrates a possible fitness tracking experience.",
-    stack: [
-      "React Native",
-      "TypeScript",
-      "Expo",
-    ],
-    accent: "#ec4899",
-    variant: "fitness",
-    concept: true,
-  },
-  {
-    id: "circle",
-    title: "Circle",
-    kind: "mobile",
-    year: "Concept",
-    summary:
-      "A community app concept for sharing announcements, updates and neighborhood activities.",
-    role: "Mobile UI concept",
-    result:
-      "Illustrates a possible community experience.",
-    stack: [
-      "Flutter",
-      "Dart",
-      "Supabase",
-    ],
-    accent: "#0ea5e9",
-    variant: "feed",
-    concept: true,
-  },
+
 ];
 
 // ─────────────────────────────────────────────────────────────
