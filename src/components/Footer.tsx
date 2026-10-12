@@ -1,6 +1,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { profile, siteData } from "../data/siteData";
+import hebtechLogo from "../assets/hebtech-logo.png";
 
 export default function Footer() {
   return (
@@ -13,10 +14,9 @@ export default function Footer() {
               <a
                 href="#top"
                 aria-label="HebTech home"
-                className="inline-flex items-center text-2xl font-semibold tracking-[-0.06em] text-text"
+                className="inline-flex items-center"
               >
-                Heb<span className="text-gray-400">Tech</span>
-                <span className="ml-1.5 size-1.5 rounded-full bg-iris" />
+                <img src={hebtechLogo} alt="HebTech" className="h-10 w-auto" />
               </a>
 
               <p className="mt-3 max-w-sm text-sm leading-6 text-muted">

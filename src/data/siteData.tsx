@@ -262,7 +262,7 @@ export const siteData = {
 
 export const projects: Project[] = [
   {
-    id: "webiste",
+    id: "www.yourwebsite.com",
     title: "Website",
     kind: "web",
     year: "Concept",

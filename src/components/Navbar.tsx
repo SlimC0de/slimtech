@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import hebtechLogo from "../assets/hebtech-logo.png";
 
 import {
   AnimatePresence,
@@ -95,22 +96,17 @@ export default function Navbar() {
           <a
             href="#top"
             aria-label="HebTech home"
-            className="group flex items-center gap-2.5"
+            className="group flex items-center"
             onClick={() => {
               setOpen(false);
               setActiveSection("top");
             }}
           >
-            <span
-              className="relative flex size-8 items-center justify-center rounded-xl bg-iris text-sm font-bold text-white shadow-md shadow-iris/30 ring-1 ring-inset ring-white/25 transition-transform duration-300 group-hover:-rotate-6"
-              aria-hidden="true"
-            >
-              H
-            </span>
-
-            <span className="text-lg font-semibold tracking-[-0.05em] text-text">
-              Heb<span className="text-muted">Tech</span>
-            </span>
+            <img
+              src={hebtechLogo}
+              alt="HebTech"
+              className="h-9 w-auto transition-transform duration-300 group-hover:-rotate-2"
+            />
           </a>
 
           {/* Desktop navigation */}
