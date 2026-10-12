@@ -3,10 +3,12 @@ import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetails";
 import ScrollToTop from "./components/ScrollToTop";
 import BackToTop from "./components/BackToTop";
+import Loader from "./components/Loader";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Loader />
       <ScrollToTop />
 
       <Routes>

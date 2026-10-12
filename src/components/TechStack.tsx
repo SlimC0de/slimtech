@@ -4,8 +4,8 @@ import { siteData } from "../data/siteData";
 export default function TechStack() {
   return (
     <section className="relative overflow-hidden">
-      <div className="mx-auto max-w-7xl px-6 py-14 md:px-10 lg:px-14 lg:py-16">
-        <div className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:items-center">
+      <div className="mx-auto max-w-7xl px-6 py-20 sm:py-28 md:px-10 lg:px-14 lg:py-36">
+        <div className="grid gap-14 sm:gap-16 lg:grid-cols-[0.65fr_1.35fr] lg:items-center lg:gap-20">
           {/* Intro */}
           <motion.div
             initial={{ opacity: 0, x: -25 }}
@@ -17,7 +17,7 @@ export default function TechStack() {
               04 — Technology
             </p>
 
-            <h2 className="mt-5 text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
+            <h2 className="mt-6 text-[clamp(3rem,6vw,5.5rem)] font-semibold leading-[0.88] tracking-[-0.07em]">
               <span className="text-slate-900">
                 Built with
               </span>
@@ -34,9 +34,9 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="glass glass-highlight rounded-[2rem] p-6 md:p-8"
+            className="glass glass-highlight rounded-[2rem] p-7 md:p-10"
           >
-            <div className="flex flex-wrap gap-2.5">
+            <div className="flex flex-wrap gap-3">
               {siteData.technologies.map((technology, index) => (
                 <motion.div
                   key={technology}

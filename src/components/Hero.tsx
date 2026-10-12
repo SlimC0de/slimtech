@@ -16,7 +16,7 @@ export default function Hero() {
         className="pointer-events-none absolute -right-40 top-10 size-[28rem] rounded-full bg-iris/10 blur-[100px]"
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 pb-6 pt-24 sm:gap-10 sm:px-8 sm:pb-14 sm:pt-32 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:pb-24 lg:pt-32">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-28 sm:gap-14 sm:px-8 sm:pb-28 sm:pt-36 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-36 lg:pt-40">
         {/* Introduction */}
         <div>
           <p
@@ -32,21 +32,21 @@ export default function Hero() {
           </p>
 
           <h1
-            className="hero-in mt-5 max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            className="hero-in mt-6 max-w-2xl font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
             style={idx(1)}
           >
             {profile.headline}
           </h1>
 
           <p
-            className="hero-in mt-5 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
+            className="hero-in mt-6 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
             style={idx(2)}
           >
             {profile.intro}
           </p>
 
           <div
-            className="hero-in mt-7 flex flex-wrap items-center gap-3"
+            className="hero-in mt-9 flex flex-wrap items-center gap-3"
             style={idx(3)}
           >
             <a
@@ -67,7 +67,7 @@ export default function Hero() {
 
         {/* Web and mobile application previews */}
         <div
-          className="relative mx-auto w-full max-w-lg pb-2 sm:pb-6 lg:pb-0"
+          className="relative mx-auto w-full max-w-lg pb-4 sm:pb-8 lg:pb-0"
           aria-label="Preview of a web app and a mobile app"
         >
           <div className="stage-in" style={idx(0)}>

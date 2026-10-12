@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -51,7 +50,6 @@ function ProjectCard({
         : Monitor;
 
   const isWebsite = project.kind === "web" || !project.kind;
-
 
   return (
     <motion.article
@@ -167,10 +165,10 @@ function ProjectCard({
         )}
       </div>
 
-      <div className="p-4 sm:p-5">
+      <div className="p-5 sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <div>
-            <div className="mb-2 flex items-center gap-2">
+            <div className="mb-3 flex items-center gap-2">
               <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-line text-iris">
                 <Icon size={16} />
               </span>
@@ -197,11 +195,11 @@ function ProjectCard({
           )}
         </div>
 
-        <p className="mt-2 text-sm leading-6 text-muted">
+        <p className="mt-3 text-sm leading-6 text-muted">
           {project.description}
         </p>
 
-        <div className="mt-3 flex flex-wrap gap-2">
+        <div className="mt-5 flex flex-wrap gap-2">
           {project.technologies.map((technology) => (
             <span
               key={technology}
@@ -234,20 +232,19 @@ export default function Projects() {
     });
   }, [filter, projects]);
 
-
-     const whatsappMessage = encodeURIComponent(
-    "Hello SlimTech, I would like to discuss a project with you.",
+  const whatsappMessage = encodeURIComponent(
+    "Hello HebTech, I would like to discuss a project with you.",
   );
- const whatsappLink = `https://wa.me/${siteData.whatsapp}?text=${whatsappMessage}`;
+  const whatsappLink = `https://wa.me/${siteData.whatsapp}?text=${whatsappMessage}`;
 
   return (
     <section
       id="work"
-      className="mx-auto max-w-6xl px-5 pt-5 pb-1 sm:px-8 sm:pt-7 sm:pb-1"
+      className="mx-auto max-w-6xl px-5 py-20 sm:px-8 sm:py-28 lg:py-36"
     >
-      <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+      <div className="flex flex-col justify-between gap-8 sm:flex-row sm:items-end">
         <div className="max-w-2xl">
-          <p className="mb-2 text-[10px] uppercase tracking-[0.3em] text-slate-400">
+          <p className="mb-4 text-[10px] uppercase tracking-[0.3em] text-slate-400">
             01 — Selected work
           </p>
 
@@ -255,7 +252,7 @@ export default function Projects() {
             Selected work
           </h2>
 
-          <p className="mt-2 max-w-xl text-sm leading-6 text-muted sm:text-base">
+          <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base">
             From school websites to mobile applications and intuitive digital
             interfaces, we design and build digital experiences that help
             businesses and institutions communicate, connect and grow.
@@ -282,7 +279,7 @@ export default function Projects() {
       </div>
 
       {shown.length > 0 ? (
-        <div className="mt-4 grid gap-4 lg:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:mt-14 lg:mt-16 lg:grid-cols-2 lg:gap-8">
           {shown.map((project, index) => (
             <ProjectCard
               key={project.slug}
@@ -292,11 +289,11 @@ export default function Projects() {
           ))}
         </div>
       ) : (
-        <div className="mt-4 rounded-2xl border border-line px-5 py-5 text-center">
+        <div className="mt-12 rounded-2xl border border-line px-6 py-12 text-center sm:mt-14 lg:mt-16">
           {filter === "mobile" ? (
-            <Smartphone className="mx-auto mb-2 text-muted" size={24} />
+            <Smartphone className="mx-auto mb-4 text-muted" size={24} />
           ) : (
-            <Palette className="mx-auto mb-2 text-muted" size={24} />
+            <Palette className="mx-auto mb-4 text-muted" size={24} />
           )}
 
           <h3 className="text-lg font-semibold text-text">
@@ -305,7 +302,7 @@ export default function Projects() {
               : "UI/UX projects coming soon"}
           </h3>
 
-          <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-muted">
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted">
             {filter === "mobile"
               ? "We build mobile applications and digital products tailored to your business and users."
               : "We design user interfaces and experiences for websites, mobile apps and digital products."}{" "}
@@ -314,7 +311,7 @@ export default function Projects() {
 
           <a
             href="/contact"
-            className="mt-3 inline-flex items-center gap-2 rounded-full bg-iris px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-iris px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90"
           >
             Discuss a project
             <ArrowUpRight size={16} />
@@ -322,10 +319,10 @@ export default function Projects() {
         </div>
       )}
 
-      <div className="mt-4 border-t border-line pt-4">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-16 border-t border-line pt-12 sm:mt-20 lg:mt-24 lg:pt-16">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-2xl">
-            <p className="mb-1.5 text-xs font-medium uppercase tracking-[0.2em] text-muted">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-muted">
               Have a different vision?
             </p>
 
@@ -333,7 +330,7 @@ export default function Projects() {
               Let&apos;s build something for you.
             </h3>
 
-            <p className="mt-1.5 text-sm leading-6 text-muted sm:text-base">
+            <p className="mt-4 text-sm leading-6 text-muted sm:text-base">
               Need a custom website, mobile application, digital product or
               UI/UX design? Let&apos;s discuss your idea and create a solution
               that fits your goals.
@@ -341,8 +338,8 @@ export default function Projects() {
           </div>
 
           <a
-             href={whatsappLink}
-            className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-iris px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:self-center"
+            href={whatsappLink}
+            className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-iris px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:self-center"
           >
             Let&apos;s talk
             <ArrowUpRight size={17} />
