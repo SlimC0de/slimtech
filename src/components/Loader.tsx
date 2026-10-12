@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-const MIN_DURATION = 1400; // minimum time the loader stays visible (ms)
+const MIN_DURATION = 2000; // how long the loader stays visible (ms)
 
 export default function Loader() {
   const [visible, setVisible] = useState(true);
@@ -36,7 +36,7 @@ export default function Loader() {
     };
   }, [visible]);
 
-  const draw = (delay: number, duration = 0.9) => ({
+  const draw = (delay: number, duration: number) => ({
     initial: { pathLength: reduceMotion ? 1 : 0 },
     animate: { pathLength: 1 },
     transition: {
@@ -54,8 +54,8 @@ export default function Loader() {
           aria-live="polite"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-surface"
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
         >
           <span className="sr-only">Loading HebTech</span>
 
@@ -63,7 +63,7 @@ export default function Loader() {
             viewBox="0 0 96 96"
             fill="none"
             aria-hidden="true"
-            className="size-20 text-iris sm:size-24"
+            className="size-12 text-iris sm:size-14"
           >
             {/* Hexagon */}
             <motion.path
@@ -71,7 +71,7 @@ export default function Loader() {
               stroke="currentColor"
               strokeWidth="6"
               strokeLinejoin="round"
-              {...draw(0, 1)}
+              {...draw(0, 0.5)}
             />
 
             {/* H */}
@@ -80,7 +80,7 @@ export default function Loader() {
               stroke="currentColor"
               strokeWidth="6"
               strokeLinecap="round"
-              {...draw(0.5, 0.8)}
+              {...draw(0.2, 0.4)}
             />
 
             {/* Center dot */}
@@ -92,10 +92,10 @@ export default function Loader() {
               initial={{ scale: reduceMotion ? 1 : 0 }}
               animate={{ scale: 1 }}
               transition={{
-                duration: reduceMotion ? 0 : 0.4,
-                delay: reduceMotion ? 0 : 1,
+                duration: reduceMotion ? 0 : 0.3,
+                delay: reduceMotion ? 0 : 0.55,
                 type: "spring",
-                stiffness: 300,
+                stiffness: 400,
                 damping: 16,
               }}
               style={{ transformOrigin: "48px 48px" }}

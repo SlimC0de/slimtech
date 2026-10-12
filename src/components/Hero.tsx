@@ -16,7 +16,7 @@ export default function Hero() {
         className="pointer-events-none absolute -right-40 top-10 size-[28rem] rounded-full bg-iris/10 blur-[100px]"
       />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-28 sm:gap-14 sm:px-8 sm:pb-28 sm:pt-36 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-36 lg:pt-40">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-8 pt-28 sm:gap-14 sm:px-8 sm:pb-12 sm:pt-36 lg:grid-cols-[1.05fr_1fr] lg:gap-16 lg:pb-16 lg:pt-40">
         {/* Introduction */}
         <div>
           <p
