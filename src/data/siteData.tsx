@@ -206,7 +206,22 @@ export const siteData = {
         "Prototyping",
         "Interaction Design",
         ],
-      }
+      },
+      {
+        number: "03",
+        slug: "done-swiss-apartments",
+        title: "Done Swiss Apartments",
+        category: "Hotel & Apartments Website",
+        description:
+          "A modern hospitality website showcasing apartment accommodation, amenities, and essential guest information, with a contact page for enquiries and bookings.",
+        link: "https://doneswiss.netlify.app/",
+        technologies: [
+          "React",
+          "TypeScript",
+          "Tailwind CSS",
+          "Vite",
+        ],
+      },
 
     ],
 

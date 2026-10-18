@@ -71,7 +71,7 @@ export default function Hero() {
           aria-label="Preview of a web app and a mobile app"
         >
           <div className="stage-in" style={idx(0)}>
-            <BrowserFrame url={`${web.id}.app`}>
+            <BrowserFrame url={`${web.id}`}>
               <Screen variant={web.variant} accent={web.accent} />
             </BrowserFrame>
           </div>
