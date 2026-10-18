@@ -1,6 +1,7 @@
 
 import founderImage from "../assets/founder.jpeg";
 
+
 // ─────────────────────────────────────────────────────────────
 // TYPES — COMPATIBLE WITH FRAMES.TSX
 // ─────────────────────────────────────────────────────────────
