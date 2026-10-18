@@ -209,12 +209,12 @@ export const siteData = {
       },
       {
         number: "03",
-        slug: "done-swiss-apartments",
-        title: "Done Swiss Apartments",
+        slug: "don-swiss-apartments",
+        title: "Don Swiss Apartments",
         category: "Hotel & Apartments Website",
         description:
           "A modern hospitality website showcasing apartment accommodation, amenities, and essential guest information, with a contact page for enquiries and bookings.",
-        link: "https://doneswiss.netlify.app/",
+        link: "https://donswiss.netlify.app/",
         technologies: [
           "React",
           "TypeScript",
