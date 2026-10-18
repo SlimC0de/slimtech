@@ -54,10 +54,9 @@ export interface Project {
     "I'm a designer and developer focused on creating beautiful, intuitive, and functional digital experiences. From UI/UX design and brand identity to modern websites, mobile applications, and digital products, I turn ideas into practical solutions that help businesses grow.",
 
     about: [
-    "I'm a designer and developer who believes great digital products need both thoughtful design and reliable technology. I focus on creating intuitive user experiences, clean interfaces, responsive websites, and functional applications that look great and work seamlessly.",
+      "Hi, I'm Ebubechukwu Henry, a UI/UX designer and developer passionate about turning ideas into beautiful, functional digital experiences. I design intuitive interfaces, build responsive websites, and develop mobile apps that help businesses and people bring their ideas to life.",
 
-    "I work with individuals, startups, and growing businesses to bring ideas to life through UI/UX design, website development, mobile app development, branding, and custom digital solutions. My approach combines creativity, technical problem-solving, and attention to detail to deliver digital experiences that are useful, engaging, and built to last.",
-
+      "I work with individuals, startups, and growing businesses to create meaningful digital solutions through UI/UX design, web development, mobile app development, and custom software. My approach combines creativity, technical problem-solving, and attention to detail to build products that look great and work seamlessly.",
     ],
 
     facts: [

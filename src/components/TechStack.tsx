@@ -3,7 +3,7 @@ import { siteData } from "../data/siteData";
 
 export default function TechStack() {
   return (
-    <section className="relative overflow-hidden">
+    <section id="techStack" className="relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 py-20 sm:py-28 md:px-10 lg:px-14 lg:py-36">
         <div className="grid gap-14 sm:gap-16 lg:grid-cols-[0.65fr_1.35fr] lg:items-center lg:gap-20">
           {/* Intro */}

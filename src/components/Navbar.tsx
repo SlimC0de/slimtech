@@ -13,69 +13,123 @@ const links = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
+  { label: "TechStack", href: "#techStack" },
+  { label: "Process", href: "#process" },
+];
+
+const sectionIds = [
+  "work",
+  "services",
+  "about",
+  "techStack",
+  "process",
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("top");
+  const [activeSection, setActiveSection] = useState("");
 
   const { scrollYProgress } = useScroll();
+
   const progress = useSpring(scrollYProgress, {
     stiffness: 120,
     damping: 30,
     restDelta: 0.001,
   });
 
-  /* Track the section in view */
+  // Track the active section and hide the indicator outside the main sections.
   useEffect(() => {
-    const sections = ["work", "services", "about"]
-      .map((id) => document.getElementById(id))
-      .filter((section): section is HTMLElement => section !== null);
+    let ticking = false;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+    const updateActiveSection = () => {
+      const scrollY = window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+      const maxScroll = pageHeight - viewportHeight;
 
-        if (visible.length > 0) {
-          setActiveSection(visible[0].target.id);
+      // Hide the indicator near the top of the page.
+      if (scrollY < 120) {
+        setActiveSection("");
+        ticking = false;
+        return;
+      }
+
+      // Hide the indicator when the footer is reached.
+      if (maxScroll > 0 && scrollY >= maxScroll - 80) {
+        setActiveSection("");
+        ticking = false;
+        return;
+      }
+
+      const marker = 160;
+      let currentSection = "";
+
+      for (const id of sectionIds) {
+        const section = document.getElementById(id);
+
+        if (
+          section &&
+          section.getBoundingClientRect().top <= marker
+        ) {
+          currentSection = id;
         }
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: [0, 0.1, 0.25, 0.5],
-      },
-    );
+      }
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      // If no tracked section is active, hide the indicator.
+      setActiveSection((previous) =>
+        previous === currentSection ? previous : currentSection,
+      );
+
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
-  /* Glass effect after scrolling, reset active link at the top */
+  // Glass effect after scrolling.
   useEffect(() => {
     const onScroll = () => {
-      const y = window.scrollY;
-      setScrolled(y > 12);
-      if (y < 120) setActiveSection("top");
+      setScrolled(window.scrollY > 12);
     };
 
     onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
-  /* Mobile menu: Escape to close */
+  // Close the mobile menu with Escape.
   useEffect(() => {
     if (!open) return;
 
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
     };
 
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+    };
   }, [open]);
 
   return (
@@ -99,7 +153,7 @@ export default function Navbar() {
             className="group flex items-center"
             onClick={() => {
               setOpen(false);
-              setActiveSection("top");
+              setActiveSection("");
             }}
           >
             <img
@@ -122,6 +176,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   aria-current={isActive ? "location" : undefined}
+                  onClick={() => setActiveSection(link.href.slice(1))}
                   className={`relative rounded-full px-4 py-2 text-sm transition-colors duration-200 ${
                     isActive
                       ? "font-medium text-text"
@@ -139,6 +194,7 @@ export default function Navbar() {
                       }}
                     />
                   )}
+
                   <span className="relative">{link.label}</span>
                 </a>
               );
@@ -148,10 +204,11 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <a
             href="#contact"
-            onClick={() => setActiveSection("contact")}
+            onClick={() => setActiveSection("")}
             className="group hidden items-center gap-2 rounded-full bg-iris px-5 py-2.5 text-xs font-semibold text-white shadow-md shadow-iris/30 ring-1 ring-inset ring-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-indigo-700 hover:shadow-lg hover:shadow-iris/40 md:flex"
           >
             Start a project
+
             <ArrowUpRight
               size={14}
               className="transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
@@ -198,7 +255,10 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
-              transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.22,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="pointer-events-auto mt-2 overflow-hidden rounded-[1.75rem] border border-line bg-surface/95 p-2 shadow-2xl shadow-slate-900/15 backdrop-blur-xl md:hidden"
             >
               {links.map((link, i) => {
@@ -211,7 +271,10 @@ export default function Navbar() {
                     aria-current={isActive ? "location" : undefined}
                     initial={{ opacity: 0, x: -8 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.05 + i * 0.05, duration: 0.2 }}
+                    transition={{
+                      delay: 0.05 + i * 0.05,
+                      duration: 0.2,
+                    }}
                     onClick={() => {
                       setOpen(false);
                       setActiveSection(link.href.slice(1));
@@ -237,10 +300,13 @@ export default function Navbar() {
                 href="#contact"
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.05 + links.length * 0.05, duration: 0.2 }}
+                transition={{
+                  delay: 0.05 + links.length * 0.05,
+                  duration: 0.2,
+                }}
                 onClick={() => {
                   setOpen(false);
-                  setActiveSection("contact");
+                  setActiveSection("");
                 }}
                 className="mt-2 flex items-center justify-center gap-2 rounded-full bg-iris px-4 py-4 text-sm font-semibold text-white shadow-md shadow-iris/30 ring-1 ring-inset ring-white/20 transition-colors hover:bg-indigo-700"
               >

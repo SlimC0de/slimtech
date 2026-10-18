@@ -1,26 +1,36 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetails";
 import ScrollToTop from "./components/ScrollToTop";
-import BackToTop from "./components/BackToTop";
+import BuyMeACoffee from "./components/BuyMeACoffee";
 import Loader from "./components/Loader";
+import Support from "./pages/Support";
 
-export default function App() {
+function AppContent() {
+  const location = useLocation();
+  const isSupportPage = location.pathname === "/support";
+
   return (
-    <BrowserRouter>
+    <>
       <Loader />
       <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<Home />} />
-
-        <Route
-          path="/projects/:slug"
-          element={<ProjectDetail />}
-        />
+        <Route path="/projects/:slug" element={<ProjectDetail />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
 
-      <BackToTop />
+      {!isSupportPage && <BuyMeACoffee />}
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
