@@ -1,11 +1,13 @@
-
 import { Coffee } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+const MotionLink = motion(Link);
 
 export default function BuyMeACoffee() {
   return (
-    <motion.a
-      href="/support"
+    <MotionLink
+      to="/support"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -3, scale: 1.03 }}
@@ -16,7 +18,7 @@ export default function BuyMeACoffee() {
         inline-flex items-center gap-2
         rounded-full
         border border-yellow-300
-        bg-yellow-400 px-4 py-2.5
+        bg-yellow-400 px-6 py-2.5
         text-gray-950
         shadow-lg shadow-yellow-500/25
         transition-all duration-200
@@ -34,6 +36,6 @@ export default function BuyMeACoffee() {
       <span className="text-xs font-bold tracking-wide">
         Buy me a coffee
       </span>
-    </motion.a>
+    </MotionLink>
   );
 }

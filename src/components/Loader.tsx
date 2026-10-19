@@ -1,19 +1,23 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
-const MIN_DURATION = 2000; // how long the loader stays visible (ms)
+const MIN_DURATION = 800;
 
 export default function Loader() {
   const [visible, setVisible] = useState(true);
   const reduceMotion = useReducedMotion();
 
-  /* Hide once the page has loaded (and the minimum time has passed) */
   useEffect(() => {
-    let timeout: number;
+    const startedAt = performance.now();
+    let timeout: number | undefined;
 
     const finish = () => {
-      const wait = Math.max(0, MIN_DURATION - performance.now());
-      timeout = window.setTimeout(() => setVisible(false), wait);
+      const elapsed = performance.now() - startedAt;
+      const remaining = Math.max(0, MIN_DURATION - elapsed);
+
+      timeout = window.setTimeout(() => {
+        setVisible(false);
+      }, remaining);
     };
 
     if (document.readyState === "complete") {
@@ -24,13 +28,16 @@ export default function Loader() {
 
     return () => {
       window.removeEventListener("load", finish);
-      window.clearTimeout(timeout);
+
+      if (timeout !== undefined) {
+        window.clearTimeout(timeout);
+      }
     };
   }, []);
 
-  /* Lock scrolling while the loader is showing */
   useEffect(() => {
     document.body.style.overflow = visible ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -54,7 +61,10 @@ export default function Loader() {
           aria-live="polite"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: reduceMotion ? 0 : 0.25,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
         >
           <span className="sr-only">Loading HebTech</span>
@@ -65,7 +75,6 @@ export default function Loader() {
             aria-hidden="true"
             className="size-12 text-iris sm:size-14"
           >
-            {/* Hexagon */}
             <motion.path
               d="M48 4 L86 26 V70 L48 92 L10 70 V26 Z"
               stroke="currentColor"
@@ -74,7 +83,6 @@ export default function Loader() {
               {...draw(0, 0.5)}
             />
 
-            {/* H */}
             <motion.path
               d="M34 30 V66 M62 30 V66 M34 48 H62"
               stroke="currentColor"
@@ -83,7 +91,6 @@ export default function Loader() {
               {...draw(0.2, 0.4)}
             />
 
-            {/* Center dot */}
             <motion.circle
               cx="48"
               cy="48"
