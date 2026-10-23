@@ -1,15 +1,15 @@
+
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   ExternalLink,
-  Palette,
   Monitor,
   Smartphone,
 } from "lucide-react";
 import { siteData } from "../data/siteData";
 
-type Filter = "all" | "web" | "mobile" | "uiux";
+type Filter = "all" | "web" | "mobile";
 
 type ProjectItem = {
   number?: string;
@@ -19,15 +19,13 @@ type ProjectItem = {
   description: string;
   link?: string | null;
   technologies: string[];
-  image?: string;
-  kind?: "web" | "mobile" | "uiux";
+  kind?: "web" | "mobile";
 };
 
 const filters: { id: Filter; label: string }[] = [
   { id: "all", label: "All work" },
   { id: "web", label: "Websites" },
-  { id: "mobile", label: "Mobile" },
-  { id: "uiux", label: "UI/UX design" },
+  { id: "mobile", label: "Mobile apps" },
 ];
 
 function ProjectCard({
@@ -38,18 +36,11 @@ function ProjectCard({
   index: number;
 }) {
   const hasLink =
-    typeof project.link === "string" && project.link.trim().length > 0;
-
-  const isDesign = project.kind === "uiux" || Boolean(project.image);
-
-  const Icon =
-    project.kind === "mobile"
-      ? Smartphone
-      : isDesign
-        ? Palette
-        : Monitor;
+    typeof project.link === "string" &&
+    project.link.trim().length > 0;
 
   const isWebsite = project.kind === "web" || !project.kind;
+  const Icon = isWebsite ? Monitor : Smartphone;
 
   return (
     <motion.article
@@ -60,33 +51,7 @@ function ProjectCard({
       className="group overflow-hidden rounded-2xl border border-line bg-surface"
     >
       <div className="relative overflow-hidden border-b border-line bg-slate-100">
-        {project.image ? (
-          hasLink ? (
-            <a
-              href={project.link!}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`View ${project.title}`}
-              className="relative block aspect-[16/10] overflow-hidden"
-            >
-              <img
-                src={project.image}
-                alt={`${project.title} visual preview`}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-              />
-            </a>
-          ) : (
-            <div className="relative block aspect-[16/10] overflow-hidden">
-              <img
-                src={project.image}
-                alt={`${project.title} visual preview`}
-                loading="lazy"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          )
-        ) : isWebsite ? (
+        {isWebsite ? (
           <div className="relative aspect-[16/10] overflow-hidden bg-white">
             <div className="flex h-10 items-center gap-2 border-b border-slate-200 bg-slate-50 px-4">
               <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
@@ -138,11 +103,7 @@ function ProjectCard({
             </div>
 
             <p className="mt-4 text-sm font-medium text-slate-500">
-              {project.kind === "mobile"
-                ? "Mobile application"
-                : isDesign
-                  ? "UI/UX design"
-                  : "Digital experience"}
+              Mobile application
             </p>
 
             {hasLink ? (
@@ -158,7 +119,7 @@ function ProjectCard({
               </a>
             ) : (
               <span className="mt-2 text-sm text-slate-400">
-                Link coming soon
+                Mobile project coming soon
               </span>
             )}
           </div>
@@ -172,6 +133,7 @@ function ProjectCard({
               <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-line text-iris">
                 <Icon size={16} />
               </span>
+
               <span className="text-xs font-medium text-muted">
                 {project.category}
               </span>
@@ -225,16 +187,14 @@ export default function Projects() {
       if (filter === "web") {
         return project.kind === "web" || !project.kind;
       }
-      if (filter === "mobile") {
-        return project.kind === "mobile";
-      }
-      return project.kind === "uiux" || Boolean(project.image);
+      return project.kind === "mobile";
     });
   }, [filter, projects]);
 
   const whatsappMessage = encodeURIComponent(
     "Hello HebTech, I would like to discuss a project with you.",
   );
+
   const whatsappLink = `https://wa.me/${siteData.whatsapp}?text=${whatsappMessage}`;
 
   return (
@@ -253,8 +213,8 @@ export default function Projects() {
           </h2>
 
           <p className="mt-5 max-w-xl text-sm leading-6 text-muted sm:text-base">
-            From school websites to mobile applications and intuitive digital
-            interfaces, we design and build digital experiences that help
+            From school websites to hospitality platforms and mobile
+            applications, we build fast, reliable digital products that help
             businesses and institutions communicate, connect and grow.
           </p>
         </div>
@@ -290,23 +250,15 @@ export default function Projects() {
         </div>
       ) : (
         <div className="mt-12 rounded-2xl border border-line px-6 py-12 text-center sm:mt-14 lg:mt-16">
-          {filter === "mobile" ? (
-            <Smartphone className="mx-auto mb-4 text-muted" size={24} />
-          ) : (
-            <Palette className="mx-auto mb-4 text-muted" size={24} />
-          )}
+          <Smartphone className="mx-auto mb-4 text-muted" size={24} />
 
           <h3 className="text-lg font-semibold text-text">
-            {filter === "mobile"
-              ? "Mobile projects coming soon"
-              : "UI/UX projects coming soon"}
+            Mobile projects coming soon
           </h3>
 
           <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted">
-            {filter === "mobile"
-              ? "We build mobile applications and digital products tailored to your business and users."
-              : "We design user interfaces and experiences for websites, mobile apps and digital products."}{" "}
-            Get in touch to discuss your project.
+            We build Android and iOS applications tailored to your
+            business and users. Get in touch to discuss your project.
           </p>
 
           <a
@@ -331,14 +283,16 @@ export default function Projects() {
             </h3>
 
             <p className="mt-4 text-sm leading-6 text-muted sm:text-base">
-              Need a custom website, mobile application, digital product or
-              UI/UX design? Let&apos;s discuss your idea and create a solution
-              that fits your goals.
+              Need a custom website, web application or mobile app?
+              Let&apos;s discuss your idea and create a solution that
+              fits your goals.
             </p>
           </div>
 
           <a
             href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex shrink-0 items-center justify-center gap-2 self-start rounded-full bg-iris px-6 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:self-center"
           >
             Let&apos;s talk

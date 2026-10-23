@@ -3,7 +3,9 @@ import { motion } from "framer-motion";
 import {
   ArrowLeft,
   ArrowUpRight,
+  ExternalLink,
   Layers3,
+  Monitor,
   Sparkles,
 } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
@@ -33,16 +35,20 @@ export default function ProjectDetail() {
           </p>
 
           <Link
-            to="/"
+            to="/#work"
             className="glass-button mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
           >
             <ArrowLeft size={16} />
-            Back home
+            Back to projects
           </Link>
         </div>
       </main>
     );
   }
+
+  const hasLink =
+    typeof project.link === "string" &&
+    project.link.trim().length > 0;
 
   return (
     <main className="min-h-screen overflow-hidden text-slate-900">
@@ -87,9 +93,9 @@ export default function ProjectDetail() {
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className="glass-soft rounded-full px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-slate-500">
-              {project.number}
+              Project {project.number}
             </span>
 
             <span className="text-[10px] uppercase tracking-[0.25em] text-slate-400">
@@ -121,7 +127,7 @@ export default function ProjectDetail() {
         </motion.div>
       </section>
 
-      {/* Main project visual */}
+      {/* Website preview */}
       <section className="relative z-10 mx-auto max-w-7xl px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 35, scale: 0.98 }}
@@ -133,43 +139,63 @@ export default function ProjectDetail() {
           }}
           className="glass glass-highlight overflow-hidden rounded-[2rem] p-2 md:rounded-[2.5rem]"
         >
-          <div className="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
-            <img
-              src={project.image}
-              alt={project.title}
-              className="h-[360px] w-full object-cover md:h-[560px] lg:h-[680px]"
-            />
+          <div className="relative overflow-hidden rounded-[1.5rem] bg-white md:rounded-[2rem]">
+            {/* Browser toolbar */}
+            <div className="flex h-12 items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 md:px-6">
+              <span className="h-3 w-3 rounded-full bg-red-400" />
+              <span className="h-3 w-3 rounded-full bg-amber-400" />
+              <span className="h-3 w-3 rounded-full bg-emerald-400" />
 
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-white/10" />
-
-            <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between gap-4 md:bottom-7 md:left-7 md:right-7">
-              <div className="glass-soft rounded-2xl px-4 py-3 backdrop-blur-2xl">
-               <p className="text-[9px] uppercase tracking-[0.2em] text-slate-500">
-                Featured project
-              </p>
-
-                <p className="mt-1 text-sm text-slate-700">
-                  {project.title}
-                </p>
+              <div className="ml-3 flex-1 truncate rounded-md bg-slate-200/70 px-3 py-1.5 text-xs text-slate-500">
+                {hasLink ? project.link : "Preview unavailable"}
               </div>
 
-              {project.link && (
+              {hasLink && (
                 <a
-                  href={project.link}
+                  href={project.link!}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Open ${project.title}`}
-                  className="glass-soft flex h-11 w-11 items-center justify-center rounded-full text-slate-700 transition-transform duration-300 hover:-translate-y-1 hover:translate-x-1"
+                  aria-label={`Open ${project.title} in a new tab`}
+                  className="text-slate-500 transition-colors hover:text-slate-900"
                 >
-                  <ArrowUpRight size={17} />
+                  <ExternalLink size={16} />
                 </a>
               )}
             </div>
+
+            {hasLink ? (
+              <iframe
+                src={project.link!}
+                title={`${project.title} website preview`}
+                loading="lazy"
+                className="h-[420px] w-full border-0 bg-white md:h-[600px] lg:h-[680px]"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              />
+            ) : (
+              <div className="flex min-h-[360px] flex-col items-center justify-center bg-gradient-to-br from-blue-50 via-white to-slate-100 px-6 py-16 text-center md:min-h-[500px]">
+                <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-blue-100 bg-white text-blue-600 shadow-sm">
+                  <Monitor size={36} strokeWidth={1.4} />
+                </div>
+
+                <p className="mt-6 text-xs uppercase tracking-[0.25em] text-slate-400">
+                  Website project
+                </p>
+
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-800">
+                  {project.title}
+                </h2>
+
+                <p className="mt-3 max-w-md text-sm leading-6 text-slate-500">
+                  A live preview is not available yet. Contact us to
+                  learn more about this project.
+                </p>
+              </div>
+            )}
           </div>
         </motion.div>
       </section>
 
-      {/* Overview */}
+      {/* Project overview */}
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-14 lg:py-20">
         <div className="grid gap-8 lg:grid-cols-[0.55fr_1.45fr]">
           <motion.div
@@ -194,28 +220,37 @@ export default function ProjectDetail() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="max-w-4xl text-[clamp(2.5rem,5vw,5rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-slate-900">
-              Turning an idea into a useful{" "}
+              Built to deliver a useful{" "}
               <span className="text-slate-400">
                 digital experience.
               </span>
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-slate-500">
-              This project was designed and developed by SlimTech with a
-              focus on clarity, usability and a polished digital
-              experience.
+              {project.description}
             </p>
 
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
-              From the interface to the technology behind it, every part
-              of the product was considered to create something practical
-              and enjoyable to use.
+              Developed with a focus on responsive design, usability,
+              performance, and the needs of the people using the product.
             </p>
+
+            {hasLink && (
+              <a
+                href={project.link!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-button mt-7 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium"
+              >
+                Visit live project
+                <ArrowUpRight size={16} />
+              </a>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* Technology */}
+      {/* Technology stack */}
       <section className="relative z-10 mx-auto max-w-7xl px-6 md:px-10 lg:px-14">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -256,29 +291,8 @@ export default function ProjectDetail() {
         </motion.div>
       </section>
 
-      {/* Secondary visual */}
-      <section className="relative z-10 mx-auto max-w-7xl px-4 py-16 md:px-6 lg:py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.15 }}
-          transition={{ duration: 0.7 }}
-          className="glass overflow-hidden rounded-[2rem] p-2 md:rounded-[2.5rem]"
-        >
-          <div className="relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
-            <img
-              src={project.image}
-              alt={`${project.title} project preview`}
-              className="h-[350px] w-full object-cover md:h-[560px]"
-            />
-
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 to-transparent" />
-          </div>
-        </motion.div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative z-10 mx-auto max-w-7xl px-6 pb-16 md:px-10 lg:px-14 lg:pb-20">
+      {/* Call to action */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:px-10 lg:px-14 lg:py-20">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -327,9 +341,7 @@ export default function ProjectDetail() {
       {/* Footer */}
       <footer className="relative z-10 border-t border-slate-200/70 px-6 py-7 md:px-10 lg:px-14">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 text-[10px] uppercase tracking-[0.18em] text-slate-400 sm:flex-row sm:items-center sm:justify-between">
-          <span>
-            © {new Date().getFullYear()} SlimTech
-          </span>
+          <span>© {new Date().getFullYear()} SlimTech</span>
 
           <Link
             to="/"
