@@ -5,7 +5,7 @@ type AnimatedLogoProps = {
 };
 
 export default function AnimatedLogo({
-  className = "h-10 w-auto",
+  className = "h-7 w-auto",
 }: AnimatedLogoProps) {
   const reduceMotion = useReducedMotion();
 
@@ -112,7 +112,7 @@ export default function AnimatedLogo({
 
       {/* Original-style wordmark */}
       <motion.span
-        className="whitespace-nowrap text-[25px] leading-none tracking-tight"
+        className="whitespace-nowrap text-[18px] leading-none tracking-tight"
         initial={{
           opacity: reduceMotion ? 1 : 0,
           x: reduceMotion ? 0 : -5,
