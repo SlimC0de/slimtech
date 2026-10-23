@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import {
   AnimatePresence,
@@ -37,7 +38,7 @@ export default function Navbar() {
     restDelta: 0.001,
   });
 
-  // Track the active section and hide the indicator outside the main sections.
+  // Track the active section.
   useEffect(() => {
     let ticking = false;
 
@@ -47,14 +48,12 @@ export default function Navbar() {
       const viewportHeight = window.innerHeight;
       const maxScroll = pageHeight - viewportHeight;
 
-      // Hide the indicator near the top of the page.
       if (scrollY < 120) {
         setActiveSection("");
         ticking = false;
         return;
       }
 
-      // Hide the indicator when the footer is reached.
       if (maxScroll > 0 && scrollY >= maxScroll - 80) {
         setActiveSection("");
         ticking = false;
@@ -133,15 +132,15 @@ export default function Navbar() {
   return (
     <header
       className={`pointer-events-none fixed left-0 right-0 top-0 z-50 px-2.5 transition-[padding] duration-300 md:px-6 ${
-        scrolled ? "pt-1.5 md:pt-3" : "pt-2.5 md:pt-5"
+        scrolled ? "pt-1 md:pt-2" : "pt-2 md:pt-3"
       }`}
     >
       <div className="mx-auto max-w-6xl">
         <div
-          className={`pointer-events-auto relative flex items-center justify-between overflow-hidden rounded-full border pl-4 pr-1.5 backdrop-blur-xl transition-all duration-300 md:px-6 ${
+          className={`pointer-events-auto relative flex items-center justify-between overflow-hidden rounded-full border pl-3 pr-1.5 backdrop-blur-xl transition-all duration-300 md:px-5 ${
             scrolled
-              ? "h-14 border-line bg-surface/80 shadow-lg shadow-slate-900/[0.07]"
-              : "h-14 border-line/70 bg-surface/60 shadow-sm md:h-16"
+              ? "h-12 border-line bg-surface/80 shadow-lg shadow-slate-900/[0.07]"
+              : "h-12 border-line/70 bg-surface/60 shadow-sm md:h-14"
           }`}
         >
           {/* Animated HebTech logo */}
@@ -154,7 +153,7 @@ export default function Navbar() {
               setActiveSection("");
             }}
           >
-            <AnimatedLogo className="h-9 w-9 transition-transform duration-300 group-hover:-rotate-2" />
+            <AnimatedLogo className="h-7 w-auto transition-transform duration-300 group-hover:-rotate-2" />
           </a>
 
           {/* Desktop navigation */}
@@ -213,7 +212,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="flex size-11 items-center justify-center rounded-full border border-line bg-surface/90 text-text transition-colors hover:bg-surface-2 md:hidden"
+            className="flex size-9 items-center justify-center rounded-full border border-line bg-surface/90 text-text transition-colors hover:bg-surface-2 md:hidden"
             aria-label={open ? "Close navigation" : "Open navigation"}
             aria-expanded={open}
             aria-controls="mobile-navigation"

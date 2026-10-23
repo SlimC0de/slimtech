@@ -1,3 +1,4 @@
+
 import { motion, useReducedMotion } from "framer-motion";
 
 type AnimatedLogoProps = {
@@ -43,7 +44,7 @@ export default function AnimatedLogo({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
-        className="h-full w-auto shrink-0"
+        className="h-7 w-7 shrink-0"
         style={{ color: "#554BFF" }}
       >
         <motion.path
@@ -112,7 +113,7 @@ export default function AnimatedLogo({
 
       {/* Original-style wordmark */}
       <motion.span
-        className="whitespace-nowrap text-[18px] leading-none tracking-tight"
+        className="whitespace-nowrap text-[20px] leading-none tracking-tight"
         initial={{
           opacity: reduceMotion ? 1 : 0,
           x: reduceMotion ? 0 : -5,
