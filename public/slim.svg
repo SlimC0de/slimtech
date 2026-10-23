@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <title>HebTech</title>
+  <g stroke="#0875F9" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M24 24 H68 V80 H116 V24 H160 V176 H140 V40"/>
+    <path d="M44 160 V40 H24 V176 H68 V100 H108"/>
+    <path d="M60 100 H116 V176"/>
+  </g>
+  <g fill="#0875F9">
+    <circle cx="24" cy="24" r="6"/>
+    <circle cx="44" cy="160" r="6"/>
+    <circle cx="140" cy="40" r="6"/>
+    <circle cx="116" cy="176" r="6"/>
+  </g>
+</svg>

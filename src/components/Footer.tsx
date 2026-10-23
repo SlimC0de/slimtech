@@ -1,7 +1,6 @@
-
 import { ArrowUpRight } from "lucide-react";
 import { profile, siteData } from "../data/siteData";
-import hebtechLogo from "../assets/hebtech-logo.png";
+import AnimatedLogo from "./AnimatedLogo";
 
 export default function Footer() {
   return (
@@ -16,14 +15,14 @@ export default function Footer() {
                 aria-label="HebTech home"
                 className="inline-flex items-center"
               >
-                <img src={hebtechLogo} alt="HebTech" className="h-10 w-auto" />
+                <AnimatedLogo className="h-9 w-auto" />
               </a>
 
               <p className="mt-3 max-w-sm text-sm leading-6 text-muted">
                 {siteData.description}
               </p>
 
-              {/* Social links as text */}
+              {/* Social links */}
               <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-3">
                 {profile.links.map((social) => (
                   <a

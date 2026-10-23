@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import hebtechLogo from "../assets/hebtech-logo.png";
-
 import {
   AnimatePresence,
   motion,
@@ -8,6 +6,7 @@ import {
   useSpring,
 } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
+import AnimatedLogo from "./AnimatedLogo";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -76,9 +75,8 @@ export default function Navbar() {
         }
       }
 
-      // If no tracked section is active, hide the indicator.
       setActiveSection((previous) =>
-        previous === currentSection ? previous : currentSection,
+        previous === currentSection ? previous : currentSection
       );
 
       ticking = false;
@@ -146,7 +144,7 @@ export default function Navbar() {
               : "h-14 border-line/70 bg-surface/60 shadow-sm md:h-16"
           }`}
         >
-          {/* Logo */}
+          {/* Animated HebTech logo */}
           <a
             href="#top"
             aria-label="HebTech home"
@@ -156,11 +154,7 @@ export default function Navbar() {
               setActiveSection("");
             }}
           >
-            <img
-              src={hebtechLogo}
-              alt="HebTech"
-              className="h-9 w-auto transition-transform duration-300 group-hover:-rotate-2"
-            />
+            <AnimatedLogo className="h-9 w-9 transition-transform duration-300 group-hover:-rotate-2" />
           </a>
 
           {/* Desktop navigation */}
